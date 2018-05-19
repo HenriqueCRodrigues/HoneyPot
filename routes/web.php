@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::prefix('script')->group(function () {
+    Route::get('run', 'ScriptController@run')->name('seed');
+});
