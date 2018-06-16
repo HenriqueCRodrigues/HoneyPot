@@ -12,10 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::prefix('report')->group(function () {
+    Route::post('for-port', 'ReportController@forPort');
 });
 
 
 Route::prefix('script')->group(function () {
+    Route::get('select', 'ScriptController@testSelect');
     Route::get('run', 'ScriptController@run')->name('seed');
 });

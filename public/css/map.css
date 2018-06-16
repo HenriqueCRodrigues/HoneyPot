@@ -1,0 +1,217 @@
+/*SEÇÃO DO MAPA*/
+.map-container{
+    background-image: url(../bg_img/matrix.gif);
+    background-size: 430px;
+    background-repeat: repeat;
+    background-position: 50% 50%;
+    height: 100%;
+}
+
+.map-container-overlay{
+    background-color: rgba(0,0,0,0.45);
+    height: 100%;
+}
+
+.menu{
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    -webkit-background-size:cover;
+	color: white; 
+	height: 640px;
+    margin: 0 auto;
+    right: 8px;
+    border-right: 1px solid rgba(58,122,94, .9);
+    border-left: 1px solid rgba(58,122,94, .9);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.menu-content{
+
+	padding: 10px;
+	padding-right: 20px;
+
+}
+.menu-title{
+	text-transform: uppercase;
+	text-align: center;
+    font-weight: 800;
+    font-size: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+
+}
+.menu-btns{
+    background-color: rgba(0,0,0,.7);
+    text-align: center;
+    border: 2px solid rgb(58,122,94);
+    font-weight: 500;
+    color: rgb(58,122,94);
+    outline: none;
+    font-size: 18px;
+    line-height: 1.3;
+    width: 235px;
+    height: 45px;
+    border-radius: 5px;
+}
+
+.menu-btns:hover{
+    border-color: rgb(255,255,255);
+    color: rgb(255,255,255);
+    transition: 0.3s;
+    outline: none;
+}
+
+.menu-btns-loc input{
+    background-color: rgb(58,122,94);
+    text-align: center;
+    margin-top: 10px; 
+    border: 2px solid rgb(58,122,94);
+    font-weight: 500;
+    color: #000;
+    outline: none;
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+    line-height: 1.3;
+    border-radius: 25px;
+}
+
+.menu-btns-loc input:hover{
+    border-color: rgb(255,255,255);
+    color: rgb(255,255,255);
+    transition: 0.3s;
+    outline: none;
+
+}
+
+#map{
+	position:absolute; 
+	top:0; 
+	bottom:0px; 
+	width:104%;
+    left:-8px;
+    border-right: 1px solid rgba(58,122,94, .9);
+    border-left: 1px solid rgba(58,122,94, .9);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    outline: none;
+}
+
+#menu {
+    background: #fff;
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    right: 10px;
+    border-radius: 3px;
+    width: 120px;
+    border: 1px solid rgba(0,0,0,0.4);
+}
+
+#menu a {
+    font-size: 13px;
+    color: #404040;
+    display: block;
+    margin: 0;
+    padding: 0;
+    padding: 10px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    text-align: center;
+}
+
+#menu a:last-child {
+    border: none;
+}
+
+#menu a:hover {
+    background-color: #f8f8f8;
+    color: #404040;
+}
+
+#menu a.active {
+    background-color: #3887be;
+    color: #ffffff;
+}
+
+#menu a.active:hover {
+    background: #3074a4;
+}
+
+/* MENU INTERIOR MAPA */
+
+.listing-group {
+    font: 12px/20px 'Raleway',cursive;
+    font-weight: 800;
+    position: absolute;
+    bottom: 15px;
+	right: -10px;
+	font-size: 12px;
+    z-index: 1;
+    border-radius: 3px;
+    max-width: 20%;
+    color: #fff;
+    text-align: center;
+}
+
+.listing-group input[type=checkbox]:first-child + label {
+    border-radius: 3px 3px 0 0;
+}
+.listing-group input[type=checkbox] {
+    display: none;
+}
+
+.listing-group input[type=checkbox] + label {
+    display: block;
+    cursor: pointer;
+    padding: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.listing-group input[type=checkbox] + label {
+    background-color: rgba(0,0,0,.8);
+    text-transform: capitalize;
+    border-color: rgb(58,122,94);
+    border: 2px solid;
+    transition: .5s;
+}
+.listing-group input[type=checkbox] + label:hover{
+    background-color: rgba(0,0,0,.8);
+    border: 2px solid;
+    color: #16E506;
+    font-weight: 800;
+}
+.listing-group input[type=checkbox]:checked + label {
+    background-color: rgba(0,0,0,.8);
+    border: 2px solid;
+    color: rgb(58,122,94);
+    font-weight: 800;
+}
+
+.path-start {
+  -webkit-transition:stroke-dashoffset 5s ease-in;
+     -moz-transition:stroke-dashoffset 5s ease-in;
+       -o-transition:stroke-dashoffset 5s ease-in;
+          transition:stroke-dashoffset 5s ease-in;
+  }
+
+
+#fly {
+    display: block;
+    position: relative;
+    margin: 0px auto;
+    width: 50%;
+    height: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    background: #ee8a65;
+}
+
+
+/* ==== TIME LINE ==== */
