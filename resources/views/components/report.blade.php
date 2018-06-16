@@ -19,10 +19,8 @@
                 </div>
                 <div class="relat-statistics">
                     <div class="row">
-                        <!--div class="col-md-5" style="visibility: hidden; display:inline;"!-->
-                        <div class="col-md-5" style="visibility: visible; display:inline;">
-                            @include('components.graph1')
-                        </div>
+                    @include('components.slider')
+
                         <div class="col-md-7" style="visibility: visible; display:inline;">
                             @include('components.description')
                         </div>

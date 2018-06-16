@@ -36,11 +36,6 @@ class ReportController extends Controller
         Por Protocolo e Tempo
 
 
-                axisY2: {
-                    interlacedColor: "rgba(58,122,94,.1)",
-                    gridColor: "rgba(58,122,94,.1)",
-                    title: "Numero de Ataques por portas"
-                },
      */
 
     public function forPort()
@@ -52,7 +47,7 @@ class ReportController extends Controller
                  ->groupBy('port')
                  ->get();
 
-        return response()->json([$ports]);
+        return response()->json($ports);
     }
 
     public function forPortAndDate()

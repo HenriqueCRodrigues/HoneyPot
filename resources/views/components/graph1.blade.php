@@ -1,26 +1,23 @@
 <div class="relat-graph">
-    <div id="chartContainer" style="height: 390px; width: 100%;"></div>
+    <div id="chartContainer" style="height: 360px; width: 100%;"></div>
 </div>
 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="js/jquery.js"></script>
-
-<script type="text/javascript">
-
-
-</script>
 <script>
+    $(".jssora061").click(function(){
+        alert('pulei');
+    });
     $.post('report/for-port', { _token: "{{ csrf_token() }}"})
         .done(function( data ) {
             var i;
             var object = [];
             var table = document.getElementById("tablePort");
 
-            for (i = data[0].length-1; i >= 0; i--) {
-                object.push({y: data[0][i].total, label: data[0][i].port})
+            for (i = data.length-1; i >= 0; i--) {
+                object.push({y: data[i].total, label: data[i].port})
                 var row = table.insertRow(0);
                 var cell1 = row.insertCell(0);
-                cell1.innerHTML = data[0][i].port;
+                cell1.innerHTML = data[i].port;
             }
 
             var chart = new CanvasJS.Chart("chartContainer", {
