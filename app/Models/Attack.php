@@ -17,4 +17,9 @@ class Attack extends Model
       'src_ip',
       'user_id',
     ];
+
+    public function protocol()
+    {
+        return $this->belongsTo(Protocol::class);
+    }
 }
