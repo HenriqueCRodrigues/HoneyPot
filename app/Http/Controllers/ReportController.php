@@ -36,14 +36,19 @@ class ReportController extends Controller
         Por Protocolo e Tempo
      */
 
-    public function forPort(Request $request)
+    public function forPort()
     {
-        $port = $request->get('port');
+        $ports = \DB::table('attacks')
+                 ->limit(10)
+                 ->select('port', \DB::raw('count(*) as total'))
+                 ->orderByDesc('total')
+                 ->groupBy('port')
+                 ->get();
 
-        return Attack::where('port', '=', $port)->get();
+        return $ports;
     }
 
-    public function forPortAndDate(Request $request)
+    public function forPortAndDate()
     {
         $port = $request->get('port');
         $dateMin = $request->get('dateMin');
@@ -56,24 +61,31 @@ class ReportController extends Controller
         ])->get();
     }
 
-    public function forPortAndProtocol(Request $request)
+    public function forPortAndProtocol()
     {
-        $port = $request->get('port');
-        $protocol = $request->get('protocol');
+        $ports =  \DB::table('attacks')
+                 ->limit(10)
+                 ->select('port', 'protocols.type', \DB::raw('count(*) as total'))
+                 ->join('protocols', 'attacks.protocol_id', '=', 'protocols.id')
+                 ->orderByDesc('total')
+                 ->groupBy('port', 'protocol_id')
+                 ->get();
 
-        return Attack::where([
-            ['port', '=', $port],
-            ['protocol', '=', $protocol],
-        ])->get();
+        return $ports;
     }
 
-    public function forCity(Request $request)
+    public function forCity()
     {
-        $city = $request->get('city');
 
-        return Attack::where([
-            ['city_id', '=', $city],
-        ])->get();
+       $city =  \DB::table('attacks')
+                 ->limit(10)
+                 ->select('cities.name', \DB::raw('count(*) as total'))
+                 ->join('cities','attacks.city_id', '=', 'cities.id')
+                 ->orderByDesc('total')
+                 ->groupBy('city_id')
+                 ->get();
+
+        return $city;
     }
 
     public function forCityAndDate(Request $request)
@@ -89,26 +101,29 @@ class ReportController extends Controller
         ])->get();
     }
 
-    public function forCityAndPort(Request $request)
+    public function forCityAndPort()
     {
-        $city = $request->get('city');
-        $port = $request->get('port');
-
-        return Attack::where([
-            ['city_id', '=', $city],
-            ['port', '=', $port],
-        ])->get();
+        $city = \DB::table('attacks')
+                 ->limit(10)
+                 ->select('cities.name', 'attacks.port', \DB::raw('count(*) as total'))
+                 ->join('cities','attacks.city_id', '=', 'cities.id')
+                 ->orderByDesc('total')
+                 ->groupBy('city_id', 'port')
+                 ->get();
+        return $city;
     }
 
     public function forCityAndProtocol(Request $request)
     {
-        $city = $request->get('city');
-        $protocol = $request->get('protocol');
-
-        return Attack::where([
-            ['city_id', '=', $city],
-            ['protocol', '=', $protocol],
-        ])->get();
+        $city = \DB::table('attacks')
+                 ->limit(10)
+                 ->select('cities.name', 'protocols.type', \DB::raw('count(*) as total'))
+                 ->join('cities','attacks.city_id', '=', 'cities.id')
+                 ->join('protocols','attacks.protocol_id', '=', 'protocols.id')
+                 ->orderByDesc('total')
+                 ->groupBy('city_id', 'protocol_id')
+                 ->get();
+        return $city;
     }
 
     public function forCityDateAndPort(Request $request)
@@ -143,13 +158,17 @@ class ReportController extends Controller
         ])->get();
     }
 
-    public function forCountry(Request $request)
+    public function forCountry()
     {
-        $country = $request->get('country');
-
-        return Attack::where([
-            ['country_id', '=', $country],
-        ])->get();
+           $country = \DB::table('attacks')
+                 ->limit(10)
+                 ->select('countries.name', \DB::raw('count(*) as total'))
+                 ->join('cities','attacks.city_id', '=', 'cities.id')
+                 ->join('countries','cities.country_id', '=', 'countries.id')
+                 ->orderByDesc('total')
+                 ->groupBy('countries.id')
+                 ->get();
+                 return $country;
     }
 
     public function forCountryAndDate(Request $request)
@@ -166,26 +185,31 @@ class ReportController extends Controller
         ])->get();
     }
 
-    public function forCountryAndPort(Request $request)
+    public function forCountryAndPort()
     {
-        $country = $request->get('country');
-        $port = $request->get('port');
-
-        return Attack::where([
-            ['country_id', '=', $country],
-            ['port', '=', $port],
-        ])->get();
+         $country = \DB::table('attacks')
+                 ->limit(10)
+                 ->select('countries.name', 'attacks.port', \DB::raw('count(*) as total'))
+                 ->join('cities','attacks.city_id', '=', 'cities.id')
+                 ->join('countries','cities.country_id', '=', 'countries.id')
+                 ->orderByDesc('total')
+                 ->groupBy('countries.id', 'attacks.port')
+                 ->get();
+                 return $country;
     }
 
-    public function forCountryAndProtocol(Request $request)
+    public function forCountryAndProtocol()
     {
-        $country = $request->get('country');
-        $protocol = $request->get('protocol');
-
-        return Attack::where([
-            ['country_id', '=', $country],
-            ['protocol', '=', $protocol],
-        ])->get();
+          $country = \DB::table('attacks')
+                 ->limit(10)
+                 ->select('countries.name', 'protocols.type', \DB::raw('count(*) as total'))
+                 ->join('cities','attacks.city_id', '=', 'cities.id')
+                 ->join('countries','cities.country_id', '=', 'countries.id')
+                 ->join('protocols','attacks.protocol_id', '=', 'protocols.id')
+                 ->orderByDesc('total')
+                 ->groupBy('countries.id', 'attacks.protocol_id')
+                 ->get();
+                 return $country;
     }
 
     public function forCountryPortAndDate(Request $request)
@@ -220,42 +244,49 @@ class ReportController extends Controller
         ])->get();
     }
 
-    public function forIp(Request $request)
+    public function forIp()
     {
-        $ip = $request->get('ip');
-
-        return Attack::where('dst_ip', '=', $ip)->get();
+        $ip = \DB::table('attacks')
+                 ->limit(10)
+                 ->select('dst_ip', \DB::raw('count(*) as total'))
+                 ->orderByDesc('total')
+                 ->groupBy('dst_ip')
+                 ->get();
+                 return $ip;
     }
 
-    public function forIpAndPort(Request $request)
+    public function forIpAndPort()
     {
-        $ip = $request->get('ip');
-        $port = $request->get('port');
-
-        return Attack::where([
-            ['dst_ip', '=', $ip],
-            ['port', '=', $port],
-        ])->get();
+         $ip = \DB::table('attacks')
+                 ->limit(10)
+                 ->select('dst_ip', 'port', \DB::raw('count(*) as total'))
+                 ->orderByDesc('total')
+                 ->groupBy('dst_ip', 'port')
+                 ->get();
+                 return $ip;
     }
 
-    public function forIpAndProtocol(Request $request)
+    public function forIpAndProtocol()
     {
-        $ip = $request->get('ip');
-        $protocol = $request->get('protocol');
-
-        return Attack::where([
-            ['dst_ip', '=', $ip],
-            ['protocol', '=', $protocol],
-        ])->get();
+        $ip = \DB::table('attacks')
+                 ->limit(10)
+                 ->select('dst_ip', 'protocols.type', \DB::raw('count(*) as total'))
+                 ->join('protocols', 'attacks.protocol_id', '=', 'protocols.id')
+                 ->orderByDesc('total')
+                 ->groupBy('dst_ip', 'protocol_id')
+                 ->get();
+                 return $ip;
     }
 
-    public function forProtocol(Request $request)
+    public function forProtocol()
     {
-        $protocol = $request->get('protocol');
-
-        return Attack::where([
-            ['protocol', '=', $protocol],
-        ])->get();
+        $ip = \DB::table('attacks')
+                 ->select('protocols.type', \DB::raw('count(*) as total'))
+                 ->join('protocols', 'attacks.protocol_id', '=', 'protocols.id')
+                 ->orderByDesc('total')
+                 ->groupBy('protocol_id')
+                 ->get();
+                 return $ip;
     }
 
     public function forProtocolAndTime(Request $request)
