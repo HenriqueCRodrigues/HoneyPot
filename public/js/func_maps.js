@@ -78,7 +78,7 @@ document.getElementById('addLinha').addEventListener('click', function () {
 							    });
 });
 
-document.getElementById('addCirculo').addEventListener('click', function () {
+function addCirculo(lat, long) {
     map.addLayer({
         "id": "point",
         "type": "circle",
@@ -89,18 +89,18 @@ document.getElementById('addCirculo').addEventListener('click', function () {
 				"geometry": {
 					"type": "LineString",
 					"coordinates": [
-							    [2.349014, 48.864716],
+							    [lat, long],
 							    [-46.625, -23.53]
 					]
 				}
 			}
         },
         "paint": {
-            "circle-radius": 20,
+            "circle-radius": 2,
             "circle-color": "#007cbf"
         }
     });
-});
+};
 
 document.getElementById('visaoGeral').addEventListener('click', function () {
     map.flyTo({
