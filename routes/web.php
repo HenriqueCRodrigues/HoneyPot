@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::prefix('map')->group(function () {
+    Route::post('insert', 'MapController@getAttacks');
+
+});
+
 Route::prefix('report')->group(function () {
     Route::post('for-port', 'ReportController@forPort');
     Route::post('for-port-and-protocol', 'ReportController@forPortAndProtocol');

@@ -18,7 +18,8 @@ class MapController extends Controller
     		])
     	->join('protocols', 'attacks.protocol_id', '=', 'protocols.id')
     	->groupBy('lat', 'lon')
-    	->get()); 
+    	->get()
+        ->chunk(500));
 
     }
 }

@@ -78,9 +78,9 @@ document.getElementById('addLinha').addEventListener('click', function () {
 							    });
 });
 
-function addCirculo(lat, long) {
+function addCirculo(lat, long, cont) {
     map.addLayer({
-        "id": "point",
+        "id": "point"+cont,
         "type": "circle",
         "source": {
         	"type": "geojson",

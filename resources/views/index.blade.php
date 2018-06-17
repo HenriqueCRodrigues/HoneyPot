@@ -222,6 +222,41 @@
 
 	<script src="js/custom.js"></script>
 
+	<script>
+        $.post('map/insert', { _token: "{{ csrf_token() }}"})
+            .done(function( data ) {
+                var i, j;
+				var firstLevel = data;
+                for (i=0; i < firstLevel.length; i++) {
+					secondLevel = firstLevel[i];
+                    for (j=0; j < secondLevel.length; j++) {
+                        var lat = '';
+                        var lon = '';
+
+                        $.each(secondLevel[j], function( key, value ) {
+                            var shuffle = Math.random().toString();
+
+                            if (key === 'lat') {
+                                lat = value
+                            }
+
+                            if (key === 'lon') {
+                                lon = value
+                            }
+
+                            if (key === 'type') {
+                                addCirculo(lat, lon, shuffle.substr(shuffle.length - 9));
+                            }
+
+                        });
+
+					}
+
+				}
+
+            });
+	</script>
+
 
 </body>
 </html>

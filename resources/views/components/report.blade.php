@@ -19,22 +19,12 @@
                 </div>
                 <div class="relat-statistics">
                     <div class="row">
-                    @include('components.slider')
-
-                        <div class="col-md-7" style="visibility: visible; display:inline;">
-                            @include('components.description')
-                        </div>
+                        @include('components.slider')
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-    <table id="tablePort">
-        <tr>Port</tr>
-        <td></td>
-    </table>
-    <div id="testAxios"></div>
-    <button type="button" href="#" id="getRequest">aqui</button>
 </section>
 

@@ -121,12 +121,21 @@
          style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
         <div data-p="170.00" id="1">
             <div class="relat-graph">
+                <div id="chartContainer1L" data-u="loading" class="jssorl-009-spin"
+                     style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
+                </div>
                 <div id="chartContainer1" style="height: 360px; width: 100%;"></div>
+
             </div>
         </div>
 
         <div data-p="170.00" id="2">
             <div class="relat-graph">
+                <div id="chartContainer2L" data-u="loading" class="jssorl-009-spin"
+                     style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
+                </div>
                 <div id="chartContainer2" style="height: 360px; width: 100%;"></div>
             </div>
         </div>
@@ -134,6 +143,10 @@
 
         <div data-p="170.00" id="3">
             <div class="relat-graph">
+                <div id="chartContainer3L" data-u="loading" class="jssorl-009-spin"
+                     style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
+                </div>
                 <div id="chartContainer3" style="height: 360px; width: 100%;"></div>
             </div>
         </div>
@@ -141,6 +154,10 @@
 
         <div data-p="170.00" id="4">
             <div class="relat-graph">
+                <div id="chartContainer4L" data-u="loading" class="jssorl-009-spin"
+                     style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
+                </div>
                 <div id="chartContainer4" style="height: 300px; width: 100%;"></div>
             </div>
         </div>
@@ -148,48 +165,80 @@
 
         <div data-p="170.00" id="5">
             <div class="relat-graph">
+                <div id="chartContainer5L" data-u="loading" class="jssorl-009-spin"
+                     style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
+                </div>
                 <div id="chartContainer5" style="height: 360px; width: 100%;"></div>
             </div>
         </div>
 
         <div data-p="170.00" id="6">
             <div class="relat-graph">
+                <div id="chartContainer6L" data-u="loading" class="jssorl-009-spin"
+                     style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
+                </div>
                 <div id="chartContainer6" style="height: 360px; width: 100%;"></div>
             </div>
         </div>
 
         <div data-p="170.00" id="7">
             <div class="relat-graph">
+                <div id="chartContainer7L" data-u="loading" class="jssorl-009-spin"
+                     style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
+                </div>
                 <div id="chartContainer7" style="height: 360px; width: 100%;"></div>
             </div>
         </div>
 
         <div data-p="170.00" id="8">
             <div class="relat-graph">
+                <div id="chartContainer8L" data-u="loading" class="jssorl-009-spin"
+                     style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
+                </div>
                 <div id="chartContainer8" style="height: 360px; width: 100%;"></div>
             </div>
         </div>
 
         <div data-p="170.00" id="9">
             <div class="relat-graph">
+                <div id="chartContainer9L" data-u="loading" class="jssorl-009-spin"
+                     style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
+                </div>
                 <div id="chartContainer9" style="height: 360px; width: 100%;"></div>
             </div>
         </div>
 
         <div data-p="170.00" id="10">
             <div class="relat-graph">
+                <div id="chartContainer10L" data-u="loading" class="jssorl-009-spin"
+                     style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
+                </div>
                 <div id="chartContainer10" style="height: 360px; width: 100%;"></div>
             </div>
         </div>
 
         <div data-p="170.00" id="11">
             <div class="relat-graph">
+                <div id="chartContainer11L" data-u="loading" class="jssorl-009-spin"
+                     style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
+                </div>
                 <div id="chartContainer11" style="height: 360px; width: 100%;"></div>
             </div>
         </div>
 
         <div data-p="170.00" id="12">
             <div class="relat-graph">
+                <div id="chartContainer12L" data-u="loading" class="jssorl-009-spin"
+                     style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
+                </div>
                 <div id="chartContainer12" style="height: 360px; width: 100%;"></div>
             </div>
         </div>
@@ -430,7 +479,7 @@
             });
 
             chart.render();
-
+            document.getElementById("chartContainer1L").remove()
         })};
 
     var forPortAndProtocol = function() {$.post('report/for-port-and-protocol', {_token: "{{ csrf_token() }}"})
@@ -498,6 +547,7 @@
             });
 
             chart.render();
+            document.getElementById("chartContainer2L").remove()
 
         })};
 
@@ -537,6 +587,7 @@
             });
 
             chart.render();
+            document.getElementById("chartContainer3L").remove()
 
         })};
 
@@ -576,6 +627,7 @@
             });
 
             chart.render();
+            document.getElementById("chartContainer4L").remove()
 
         })};
 
@@ -640,6 +692,7 @@
             });
 
             chart.render();
+            document.getElementById("chartContainer5L").remove()
 
         })};
 
@@ -679,6 +732,7 @@
             });
 
             chart.render();
+            document.getElementById("chartContainer6L").remove()
 
         })};
 
@@ -718,6 +772,7 @@
             });
 
             chart.render();
+            document.getElementById("chartContainer7L").remove()
 
         })};
 
@@ -782,6 +837,8 @@
             });
 
             chart.render();
+            document.getElementById("chartContainer8L").remove()
+
         })};
 
     var forIP = function() {$.post('report/for-ip', {_token: "{{ csrf_token() }}"})
@@ -820,6 +877,7 @@
             });
 
             chart.render();
+            document.getElementById("chartContainer9L").remove()
 
         })};
 
@@ -859,6 +917,7 @@
             });
 
             chart.render();
+            document.getElementById("chartContainer10L").remove()
 
         })};
 
@@ -923,6 +982,8 @@
             });
 
             chart.render();
+            document.getElementById("chartContainer11L").remove()
+
         })};
 
     var forProtocol = function() {$.post('report/for-protocol', {_token: "{{ csrf_token() }}"})
@@ -986,6 +1047,8 @@
             });
 
             chart.render();
+            document.getElementById("chartContainer12L").remove()
+
         })};
 
 </script>
