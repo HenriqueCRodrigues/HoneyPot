@@ -119,46 +119,81 @@
     </div>
     <div data-u="slides"
          style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
-        <div data-p="170.00">
-            <img data-u="image"
-                 src="http://img.ibxk.com.br/ns/rexposta/2016/07/27/27230226628816.jpg?watermark=neaki&w=600"/>
-        </div>
-        <div data-p="170.00" id="forPort">
+        <div data-p="170.00" id="1">
             <div class="relat-graph">
-                <div id="chartContainer" style="height: 360px; width: 100%;"></div>
+                <div id="chartContainer1" style="height: 360px; width: 100%;"></div>
             </div>
+        </div>
 
+        <div data-p="170.00" id="2">
+            <div class="relat-graph">
+                <div id="chartContainer2" style="height: 360px; width: 100%;"></div>
+            </div>
         </div>
-        <div data-p="170.00">
-            <img data-u="image" src="https://pm1.narvii.com/6612/f8df77563735e0bd149d899116dcfd38e18b3cc5_hq.jpg"/>
+
+
+        <div data-p="170.00" id="3">
+            <div class="relat-graph">
+                <div id="chartContainer3" style="height: 360px; width: 100%;"></div>
+            </div>
         </div>
-        <div data-p="170.00">
-            <img data-u="image"
-                 src="https://scontent-atl3-1.cdninstagram.com/vp/873714451820826712106971ccb30f3b/5BC1FE7D/t51.2885-15/e35/33210118_148097136047300_3612369294697955328_n.jpg"/>
+
+
+        <div data-p="170.00" id="4">
+            <div class="relat-graph">
+                <div id="chartContainer4" style="height: 300px; width: 100%;"></div>
+            </div>
         </div>
-        <div data-p="170.00">
-            <img data-u="image" data-src2="img/048.jpg"/>
+
+
+        <div data-p="170.00" id="5">
+            <div class="relat-graph">
+                <div id="chartContainer5" style="height: 360px; width: 100%;"></div>
+            </div>
         </div>
-        <div data-p="170.00">
-            <img data-u="image" data-src2="img/044.jpg"/>
-            <div u="thumb">Slide Description 006</div>
+
+        <div data-p="170.00" id="6">
+            <div class="relat-graph">
+                <div id="chartContainer6" style="height: 360px; width: 100%;"></div>
+            </div>
         </div>
-        <div data-p="170.00">
-            <img data-u="image" data-src2="img/050.jpg"/>
-            <div u="thumb">Slide Description 007</div>
+
+        <div data-p="170.00" id="7">
+            <div class="relat-graph">
+                <div id="chartContainer7" style="height: 360px; width: 100%;"></div>
+            </div>
         </div>
-        <div data-p="170.00">
-            <img data-u="image" data-src2="img/049.jpg"/>
-            <div u="thumb">Slide Description 008</div>
+
+        <div data-p="170.00" id="8">
+            <div class="relat-graph">
+                <div id="chartContainer8" style="height: 360px; width: 100%;"></div>
+            </div>
         </div>
-        <div data-p="170.00">
-            <img data-u="image" data-src2="img/052.jpg"/>
-            <div u="thumb">Slide Description 009</div>
+
+        <div data-p="170.00" id="9">
+            <div class="relat-graph">
+                <div id="chartContainer9" style="height: 360px; width: 100%;"></div>
+            </div>
         </div>
-        <div data-p="170.00">
-            <img data-u="image" data-src2="img/051.jpg"/>
-            <div u="thumb">Slide Description 010</div>
+
+        <div data-p="170.00" id="10">
+            <div class="relat-graph">
+                <div id="chartContainer10" style="height: 360px; width: 100%;"></div>
+            </div>
         </div>
+
+        <div data-p="170.00" id="11">
+            <div class="relat-graph">
+                <div id="chartContainer11" style="height: 360px; width: 100%;"></div>
+            </div>
+        </div>
+
+        <div data-p="170.00" id="12">
+            <div class="relat-graph">
+                <div id="chartContainer12" style="height: 360px; width: 100%;"></div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Arrow Navigator -->
@@ -178,50 +213,761 @@
 
 <script src="js/jquery.js"></script>
 <script>
-    $(".jssora061").click(function () {
+    var prev, prox;
 
-        $.post('report/for-port', {_token: "{{ csrf_token() }}"})
-            .done(function (data) {
-                var i;
-                var object = [];
-                var table = document.getElementById("tablePort");
-
-                for (i = data.length - 1; i >= 0; i--) {
-                    object.push({y: data[i].total, label: data[i].port})
-                    var row = table.insertRow(0);
-                    var cell1 = row.insertCell(0);
-                    cell1.innerHTML = data[i].port;
-                }
-
-                var chart = new CanvasJS.Chart("chartContainer", {
-                    animationEnabled: true,
-                    theme: "dark1",
-
-                    title: {
-                        fontFamily: "Righteous",
-                        text: "Numero de Ataques por portas"
-                    },
-                    axisX: {
-                        interval: 1
-                    },
-                    axisY2: {
-                        interlacedColor: "rgba(58,122,94,.1)",
-                        gridColor: "rgba(58,122,94,.1)",
-                        title: "As 10 portas mais atacadas"
-                    },
-                    data: [{
-                        indexLabelFontFamily: "Righteous",
-                        type: "bar",
-                        name: "companies",
-                        color: "rgb(58,122,94)",
-                        axisYType: "secondary",
-                        dataPoints: object
-                    }]
-                });
-
-                chart.render();
-
-            });
+    $(document).ready(function() {
+        forPort();
     });
+
+    $(".jssora061").click(function () {
+        /** DIV 1 => FORPORT**/
+        prev = document.getElementById("11").style.cssText.indexOf('transform') === -1;
+        prox = document.getElementById("2").style.cssText.indexOf('transform') === -1;
+
+        if (prev && this.getAttribute("data-u") === 'arrowright') {
+            forPort()
+        }
+
+        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+            forPort()
+        }
+
+
+        /** DIV 2 => FORPORTANDPROTOCOL**/
+        prev = document.getElementById("1").style.cssText.indexOf('transform') === -1;
+        prox = document.getElementById("3").style.cssText.indexOf('transform') === -1;
+
+        if (prev && this.getAttribute("data-u") === 'arrowright') {
+            forPortAndProtocol()
+        }
+
+        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+            forPortAndProtocol()
+        }
+
+
+        /** DIV 3 => FORPCITY**/
+        prev = document.getElementById("2").style.cssText.indexOf('transform') === -1;
+        prox = document.getElementById("4").style.cssText.indexOf('transform') === -1;
+
+        if (prev && this.getAttribute("data-u") === 'arrowright') {
+            forCity()
+        }
+
+        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+            forCity()
+        }
+
+
+        /** DIV 4 => FORPCITY**/
+        prev = document.getElementById("3").style.cssText.indexOf('transform') === -1;
+        prox = document.getElementById("5").style.cssText.indexOf('transform') === -1;
+
+        if (prev && this.getAttribute("data-u") === 'arrowright') {
+            forCityAndPort()
+        }
+
+        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+            forCityAndPort()
+        }
+
+
+        /** DIV 5 => FORPCITY**/
+        prev = document.getElementById("4").style.cssText.indexOf('transform') === -1;
+        prox = document.getElementById("6").style.cssText.indexOf('transform') === -1;
+
+        if (prev && this.getAttribute("data-u") === 'arrowright') {
+            forCityAndProtocol()
+        }
+
+        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+            forCityAndProtocol()
+        }
+
+        /** DIV 6 => FORPCITY**/
+        prev = document.getElementById("5").style.cssText.indexOf('transform') === -1;
+        prox = document.getElementById("7").style.cssText.indexOf('transform') === -1;
+
+        if (prev && this.getAttribute("data-u") === 'arrowright') {
+            forCountry()
+        }
+
+        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+            forCountry()
+        }
+
+        /** DIV 7 => FORPCITY**/
+        prev = document.getElementById("6").style.cssText.indexOf('transform') === -1;
+        prox = document.getElementById("8").style.cssText.indexOf('transform') === -1;
+
+        if (prev && this.getAttribute("data-u") === 'arrowright') {
+            forCountryAndPort()
+        }
+
+        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+            forCountryAndPort()
+        }
+
+
+        /** DIV 8 => FORPCITY**/
+        prev = document.getElementById("7").style.cssText.indexOf('transform') === -1;
+        prox = document.getElementById("9").style.cssText.indexOf('transform') === -1;
+
+        if (prev && this.getAttribute("data-u") === 'arrowright') {
+            forCountryAndProtocol()
+        }
+
+        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+            forCountryAndProtocol()
+        }
+
+
+        /** DIV 9 => FORPCITY**/
+        prev = document.getElementById("8").style.cssText.indexOf('transform') === -1;
+        prox = document.getElementById("10").style.cssText.indexOf('transform') === -1;
+
+        if (prev && this.getAttribute("data-u") === 'arrowright') {
+            forIP()
+        }
+
+        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+            forIP()
+        }
+
+
+        /** DIV 10 => FORPCITY**/
+        prev = document.getElementById("9").style.cssText.indexOf('transform') === -1;
+        prox = document.getElementById("11").style.cssText.indexOf('transform') === -1;
+
+        if (prev && this.getAttribute("data-u") === 'arrowright') {
+            forIPAndPort()
+        }
+
+        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+            forIPAndPort()
+        }
+
+
+        /** DIV 11 => FORPCITY**/
+        prev = document.getElementById("10").style.cssText.indexOf('transform') === -1;
+        prox = document.getElementById("12").style.cssText.indexOf('transform') === -1;
+
+        if (prev && this.getAttribute("data-u") === 'arrowright') {
+            forIPAndProtocol()
+        }
+
+        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+            forIPAndProtocol()
+        }
+
+
+        /** DIV 12 => FORPCITY**/
+        prev = document.getElementById("11").style.cssText.indexOf('transform') === -1;
+        prox = document.getElementById("1").style.cssText.indexOf('transform') === -1;
+
+        if (prev && this.getAttribute("data-u") === 'arrowright') {
+            forProtocol()
+        }
+
+        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+            forProtocol()
+        }
+    });
+
+
+    var forPort = function() {$.post('report/for-port', {_token: "{{ csrf_token() }}"})
+        .done(function (data) {
+            var i;
+            var object = [];
+
+            for (i = data.length - 1; i >= 0; i--) {
+                object.push({y: data[i].total, label: data[i].port})
+            }
+
+            var chart = new CanvasJS.Chart("chartContainer1", {
+                animationEnabled: true,
+                theme: "dark1",
+
+                title: {
+                    fontFamily: "Righteous",
+                    text: "Numero de Ataques por portas"
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY2: {
+                    interlacedColor: "rgba(58,122,94,.1)",
+                    gridColor: "rgba(58,122,94,.1)",
+                    title: "As 10 portas mais atacadas"
+                },
+                data: [{
+                    indexLabelFontFamily: "Righteous",
+                    type: "bar",
+                    name: "companies",
+                    color: "rgb(58,122,94)",
+                    axisYType: "secondary",
+                    dataPoints: object
+                }]
+            });
+
+            chart.render();
+
+        })};
+
+    var forPortAndProtocol = function() {$.post('report/for-port-and-protocol', {_token: "{{ csrf_token() }}"})
+        .done(function (data) {
+            var i;
+            var objectTCP = [];
+            var objectUDP = [];
+            var objectColor = [];
+
+            for (i = data.length - 1; i >= 0; i--) {
+                if (data[i].type === 'TCP') {
+                    objectTCP.push({y: data[i].total, label: data[i].port});
+                    objectUDP.push({y: 0});
+                    objectColor.push('#ff0000');
+                } else {
+                    objectTCP.push({y: 0});
+                    objectUDP.push({y: data[i].total, label: data[i].port});
+                    objectColor.push('#0000ff');
+                }
+            }
+
+
+            CanvasJS.addColorSet("colorArray",
+                objectColor
+            );
+
+            var chart = new CanvasJS.Chart("chartContainer2", {
+                animationEnabled: true,
+                theme: "dark1",
+                colorSet: "colorArray",
+                title: {
+                    fontFamily: "Righteous",
+                    text: "Numero de Ataques por portas e protocolos"
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY2: {
+                    interlacedColor: "rgba(58,122,94,.1)",
+                    gridColor: "rgba(58,122,94,.1)",
+                    title: "As 10 portas e protocolos mais atacadas"
+                },
+                legend: {
+                    horizontalAlign: "left", // "center" , "right"
+                    verticalAlign: "center",  // "top" , "bottom"
+                    fontSize: 15
+                },
+                data: [{
+                    indexLabelFontFamily: "Righteous",
+                    type: "bar",
+                    name: "companies",
+                    axisYType: "secondary",
+                    showInLegend: true,
+                    legendText: 'TCP',
+                    dataPoints: objectTCP
+                },{
+                    indexLabelFontFamily: "Righteous",
+                    type: "bar",
+                    name: "companies",
+                    axisYType: "secondary",
+                    showInLegend: true,
+                    legendText: 'UDP',
+                    dataPoints: objectUDP
+                }]
+            });
+
+            chart.render();
+
+        })};
+
+    var forCity = function() {$.post('report/for-city', {_token: "{{ csrf_token() }}"})
+        .done(function (data) {
+            var i;
+            var object = [];
+
+            for (i = data.length - 1; i >= 0; i--) {
+                object.push({y: data[i].total, label: data[i].name})
+            }
+
+            var chart = new CanvasJS.Chart("chartContainer3", {
+                animationEnabled: true,
+                theme: "dark1",
+
+                title: {
+                    fontFamily: "Righteous",
+                    text: "Numero de Ataques por cidades"
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY2: {
+                    interlacedColor: "rgba(58,122,94,.1)",
+                    gridColor: "rgba(58,122,94,.1)",
+                    title: "As 10 cidades mais atacadas"
+                },
+                data: [{
+                    indexLabelFontFamily: "Righteous",
+                    type: "bar",
+                    name: "companies",
+                    color: "rgb(58,122,94)",
+                    axisYType: "secondary",
+                    dataPoints: object
+                }]
+            });
+
+            chart.render();
+
+        })};
+
+    var forCityAndPort = function() {$.post('report/for-city-and-port', {_token: "{{ csrf_token() }}"})
+        .done(function (data) {
+            var i;
+            var object = [];
+
+            for (i = 0; i < data.length ; i++) {
+                object.push({y: data[i].total, label: data[i].name+'     '+data[i].port})
+            }
+
+            var chart = new CanvasJS.Chart("chartContainer4", {
+                animationEnabled: true,
+                theme: "dark1",
+
+                title: {
+                    fontFamily: "Righteous",
+                    text: "Numero de Ataques por cidades e portas"
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY: {
+                    interlacedColor: "rgba(58,122,94,.1)",
+                    gridColor: "rgba(58,122,94,.1)",
+                    title: "As 10 cidades e portas mais atacadas"
+                },
+                data: [{
+                    indexLabelFontFamily: "Righteous",
+                    type: "column",
+                    name: "companies",
+                    color: "rgb(58,122,94)",
+                    axisYType: "primary",
+                    dataPoints: object
+                }]
+            });
+
+            chart.render();
+
+        })};
+
+    var forCityAndProtocol = function() {$.post('report/for-city-and-protocol', {_token: "{{ csrf_token() }}"})
+        .done(function (data) {
+            var i;
+            var objectTCP = [];
+            var objectUDP = [];
+            var objectColor = [];
+
+            for (i = data.length - 1; i >= 0; i--) {
+                if (data[i].type === 'TCP') {
+                    objectTCP.push({y: data[i].total, label: data[i].name});
+                    objectUDP.push({y: 0});
+                    objectColor.push('#ff0000');
+                } else {
+                    objectTCP.push({y: 0});
+                    objectUDP.push({y: data[i].total, label: data[i].name});
+                    objectColor.push('#0000ff');
+                }
+            }
+
+
+            var chart = new CanvasJS.Chart("chartContainer5", {
+                animationEnabled: true,
+                theme: "dark1",
+                colorSet: "colorArray",
+                title: {
+                    fontFamily: "Righteous",
+                    text: "Numero de Ataques por portas e protocolos"
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY2: {
+                    interlacedColor: "rgba(58,122,94,.1)",
+                    gridColor: "rgba(58,122,94,.1)",
+                    title: "As 10 portas e protocolos mais atacadas"
+                },
+                legend: {
+                    horizontalAlign: "left", // "center" , "right"
+                    verticalAlign: "center",  // "top" , "bottom"
+                    fontSize: 15
+                },
+                data: [{
+                    indexLabelFontFamily: "Righteous",
+                    type: "bar",
+                    name: "companies",
+                    axisYType: "secondary",
+                    showInLegend: true,
+                    legendText: 'TCP',
+                    dataPoints: objectTCP
+                },{
+                    indexLabelFontFamily: "Righteous",
+                    type: "bar",
+                    name: "companies",
+                    axisYType: "secondary",
+                    showInLegend: true,
+                    legendText: 'UDP',
+                    dataPoints: objectUDP
+                }]
+            });
+
+            chart.render();
+
+        })};
+
+    var forCountry = function() {$.post('report/for-country', {_token: "{{ csrf_token() }}"})
+        .done(function (data) {
+            var i;
+            var object = [];
+
+            for (i = data.length - 1; i >= 0; i--) {
+                object.push({y: data[i].total, label: data[i].name})
+            }
+
+            var chart = new CanvasJS.Chart("chartContainer6", {
+                animationEnabled: true,
+                theme: "dark1",
+
+                title: {
+                    fontFamily: "Righteous",
+                    text: "Numero de Ataques por países"
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY2: {
+                    interlacedColor: "rgba(58,122,94,.1)",
+                    gridColor: "rgba(58,122,94,.1)",
+                    title: "Os 10 países mais atacadas"
+                },
+                data: [{
+                    indexLabelFontFamily: "Righteous",
+                    type: "bar",
+                    name: "companies",
+                    color: "rgb(58,122,94)",
+                    axisYType: "secondary",
+                    dataPoints: object
+                }]
+            });
+
+            chart.render();
+
+        })};
+
+    var forCountryAndPort = function() {$.post('report/for-country-and-port', {_token: "{{ csrf_token() }}"})
+        .done(function (data) {
+            var i;
+            var object = [];
+
+            for (i = 0; i < data.length ; i++) {
+                object.push({y: data[i].total, label: data[i].name+'     '+data[i].port})
+            }
+
+            var chart = new CanvasJS.Chart("chartContainer7", {
+                animationEnabled: true,
+                theme: "dark1",
+
+                title: {
+                    fontFamily: "Righteous",
+                    text: "Numero de Ataques por cidades e portas"
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY: {
+                    interlacedColor: "rgba(58,122,94,.1)",
+                    gridColor: "rgba(58,122,94,.1)",
+                    title: "As 10 cidades e portas mais atacadas"
+                },
+                data: [{
+                    indexLabelFontFamily: "Righteous",
+                    type: "column",
+                    name: "companies",
+                    color: "rgb(58,122,94)",
+                    axisYType: "primary",
+                    dataPoints: object
+                }]
+            });
+
+            chart.render();
+
+        })};
+
+    var forCountryAndProtocol = function() {$.post('report/for-country-and-protocol', {_token: "{{ csrf_token() }}"})
+        .done(function (data) {
+            var i;
+            var objectTCP = [];
+            var objectUDP = [];
+            var objectColor = [];
+
+            for (i = data.length - 1; i >= 0; i--) {
+                if (data[i].type === 'TCP') {
+                    objectTCP.push({y: data[i].total, label: data[i].name});
+                    objectUDP.push({y: 0});
+                    objectColor.push('#ff0000');
+                } else {
+                    objectTCP.push({y: 0});
+                    objectUDP.push({y: data[i].total, label: data[i].name});
+                    objectColor.push('#0000ff');
+                }
+            }
+
+
+            var chart = new CanvasJS.Chart("chartContainer8", {
+                animationEnabled: true,
+                theme: "dark1",
+                colorSet: "colorArray",
+                title: {
+                    fontFamily: "Righteous",
+                    text: "Numero de Ataques por países e protocolos"
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY2: {
+                    interlacedColor: "rgba(58,122,94,.1)",
+                    gridColor: "rgba(58,122,94,.1)",
+                    title: "Os 10 países e protocolos mais atacadas"
+                },
+                legend: {
+                    horizontalAlign: "left", // "center" , "right"
+                    verticalAlign: "center",  // "top" , "bottom"
+                    fontSize: 15
+                },
+                data: [{
+                    indexLabelFontFamily: "Righteous",
+                    type: "bar",
+                    name: "companies",
+                    axisYType: "secondary",
+                    showInLegend: true,
+                    legendText: 'TCP',
+                    dataPoints: objectTCP
+                },{
+                    indexLabelFontFamily: "Righteous",
+                    type: "bar",
+                    name: "companies",
+                    axisYType: "secondary",
+                    showInLegend: true,
+                    legendText: 'UDP',
+                    dataPoints: objectUDP
+                }]
+            });
+
+            chart.render();
+        })};
+
+    var forIP = function() {$.post('report/for-ip', {_token: "{{ csrf_token() }}"})
+        .done(function (data) {
+            var i;
+            var object = [];
+
+            for (i = data.length - 1; i >= 0; i--) {
+                object.push({y: data[i].total, label: data[i].dst_ip})
+            }
+
+            var chart = new CanvasJS.Chart("chartContainer9", {
+                animationEnabled: true,
+                theme: "dark1",
+
+                title: {
+                    fontFamily: "Righteous",
+                    text: "Numero de Ataques por IP"
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY2: {
+                    interlacedColor: "rgba(58,122,94,.1)",
+                    gridColor: "rgba(58,122,94,.1)",
+                    title: "Os 10 IP mais atacadas"
+                },
+                data: [{
+                    indexLabelFontFamily: "Righteous",
+                    type: "bar",
+                    name: "companies",
+                    color: "rgb(58,122,94)",
+                    axisYType: "secondary",
+                    dataPoints: object
+                }]
+            });
+
+            chart.render();
+
+        })};
+
+    var forIPAndPort = function() {$.post('report/for-ip-and-port', {_token: "{{ csrf_token() }}"})
+        .done(function (data) {
+            var i;
+            var object = [];
+
+            for (i = 0; i < data.length ; i++) {
+                object.push({y: data[i].total, label: data[i].dst_ip+'     '+data[i].port})
+            }
+
+            var chart = new CanvasJS.Chart("chartContainer10", {
+                animationEnabled: true,
+                theme: "dark1",
+
+                title: {
+                    fontFamily: "Righteous",
+                    text: "Numero de Ataques por IP e portas"
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY: {
+                    interlacedColor: "rgba(58,122,94,.1)",
+                    gridColor: "rgba(58,122,94,.1)",
+                    title: "Os 10 IP e portas mais atacadas"
+                },
+                data: [{
+                    indexLabelFontFamily: "Righteous",
+                    type: "column",
+                    name: "companies",
+                    color: "rgb(58,122,94)",
+                    axisYType: "primary",
+                    dataPoints: object
+                }]
+            });
+
+            chart.render();
+
+        })};
+
+    var forIPAndProtocol = function() {$.post('report/for-ip-and-protocol', {_token: "{{ csrf_token() }}"})
+        .done(function (data) {
+            var i;
+            var objectTCP = [];
+            var objectUDP = [];
+            var objectColor = [];
+
+            for (i = data.length - 1; i >= 0; i--) {
+                if (data[i].type === 'TCP') {
+                    objectTCP.push({y: data[i].total, label: data[i].dst_ip});
+                    objectUDP.push({y: 0});
+                    objectColor.push('#ff0000');
+                } else {
+                    objectTCP.push({y: 0});
+                    objectUDP.push({y: data[i].total, label: data[i].dst_ip});
+                    objectColor.push('#0000ff');
+                }
+            }
+
+
+            var chart = new CanvasJS.Chart("chartContainer11", {
+                animationEnabled: true,
+                theme: "dark1",
+                colorSet: "colorArray",
+                title: {
+                    fontFamily: "Righteous",
+                    text: "Numero de Ataques por IP e protocolos"
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY2: {
+                    interlacedColor: "rgba(58,122,94,.1)",
+                    gridColor: "rgba(58,122,94,.1)",
+                    title: "Os 10 IP e protocolos mais atacadas"
+                },
+                legend: {
+                    horizontalAlign: "left", // "center" , "right"
+                    verticalAlign: "center",  // "top" , "bottom"
+                    fontSize: 15
+                },
+                data: [{
+                    indexLabelFontFamily: "Righteous",
+                    type: "bar",
+                    name: "companies",
+                    axisYType: "secondary",
+                    showInLegend: true,
+                    legendText: 'TCP',
+                    dataPoints: objectTCP
+                },{
+                    indexLabelFontFamily: "Righteous",
+                    type: "bar",
+                    name: "companies",
+                    axisYType: "secondary",
+                    showInLegend: true,
+                    legendText: 'UDP',
+                    dataPoints: objectUDP
+                }]
+            });
+
+            chart.render();
+        })};
+
+    var forProtocol = function() {$.post('report/for-protocol', {_token: "{{ csrf_token() }}"})
+        .done(function (data) {
+            var i;
+            var objectTCP = [];
+            var objectUDP = [];
+            var objectColor = [];
+
+            for (i = data.length - 1; i >= 0; i--) {
+                if (data[i].type === 'TCP') {
+                    objectTCP.push({y: data[i].total});
+                    objectUDP.push({y: 0});
+                    objectColor.push('#ff0000');
+                } else {
+                    objectTCP.push({y: 0});
+                    objectUDP.push({y: data[i].total});
+                    objectColor.push('#0000ff');
+                }
+            }
+
+
+            var chart = new CanvasJS.Chart("chartContainer12", {
+                animationEnabled: true,
+                theme: "dark1",
+                colorSet: "colorArray",
+                title: {
+                    fontFamily: "Righteous",
+                    text: "Numero de Ataques por IP e protocolos"
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY2: {
+                    interlacedColor: "rgba(58,122,94,.1)",
+                    gridColor: "rgba(58,122,94,.1)",
+                    title: "Os 10 IP e protocolos mais atacadas"
+                },
+                legend: {
+                    horizontalAlign: "left", // "center" , "right"
+                    verticalAlign: "center",  // "top" , "bottom"
+                    fontSize: 15
+                },
+                data: [{
+                    indexLabelFontFamily: "Righteous",
+                    type: "bar",
+                    name: "companies",
+                    axisYType: "secondary",
+                    showInLegend: true,
+                    legendText: 'TCP',
+                    dataPoints: objectTCP
+                },{
+                    indexLabelFontFamily: "Righteous",
+                    type: "bar",
+                    name: "companies",
+                    axisYType: "secondary",
+                    showInLegend: true,
+                    legendText: 'UDP',
+                    dataPoints: objectUDP
+                }]
+            });
+
+            chart.render();
+        })};
+
 
 </script>
