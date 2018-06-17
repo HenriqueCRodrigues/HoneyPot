@@ -160,6 +160,19 @@ class ReportController extends Controller
         ])->get();
     }
 
+    public function forCityPortAndProtocol()
+    {
+        $city = \DB::table('attacks')
+            ->limit(10)
+            ->select('cities.name', 'attacks.port', 'protocols.type', \DB::raw('count(*) as total'))
+            ->join('cities','attacks.city_id', '=', 'cities.id')
+            ->join('protocols','attacks.protocol_id', '=', 'protocols.id')
+            ->orderByDesc('total')
+            ->groupBy('city_id', 'port', 'protocol_id')
+            ->get();
+        return $city;
+    }
+
     public function forCountry()
     {
            $country = \DB::table('attacks')
@@ -244,6 +257,21 @@ class ReportController extends Controller
             ['dateMin', '>', $dateMin],
             ['dateMax', '<', $dateMax],
         ])->get();
+    }
+
+    public function forCountryPortAndProtocol()
+    {
+        $country = \DB::table('attacks')
+            ->limit(10)
+            ->select('countries.name', 'attacks.port', 'protocols.type', \DB::raw('count(*) as total'))
+            ->join('cities','attacks.city_id', '=', 'cities.id')
+            ->join('countries','cities.country_id', '=', 'countries.id')
+            ->join('protocols','attacks.protocol_id', '=', 'protocols.id')
+            ->orderByDesc('total')
+            ->groupBy('countries.id', 'attacks.protocol_id', 'attacks.port')
+            ->get();
+
+        return $country;
     }
 
     public function forIp()

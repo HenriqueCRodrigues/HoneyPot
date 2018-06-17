@@ -31,53 +31,6 @@ document.getElementById('listing-group').addEventListener('change', function(e) 
 		}
 });
 
-
-/* ==== FUNÇÕES NO MAPA ==== */
-document.getElementById('addLinha').addEventListener('click', function () {
-							    map.addLayer({
-							        "id": "route",
-							        "type": "line",
-							        "source": {
-							            "type": "geojson",
-							            "data": {
-							                "type": "Feature",
-							                "geometry": {
-							                    "type": "LineString",
-							                    "coordinates": [
-							                        [-122.43, 37.77], //origem
-							                        [-46.625, -23.53] // destino
-							                    ]
-							                }
-							            }
-							        },
-							        "paint": {
-							            "line-color": "rgba(255,0,0,.75)",
-							            "line-width": 2
-							        }
-							    }),
-							    map.addLayer({
-							        "id": "route2",
-							        "type": "line",
-							        "source": {
-							            "type": "geojson",
-							            "data": {
-							                "type": "Feature",
-							                "geometry": {
-							                    "type": "LineString",
-							                    "coordinates": [
-							                        [2.349014, 48.864716],
-							                        [-46.625, -23.53]
-							                    ]
-							                }
-							            }
-							        },
-							        "paint": {
-							            "line-color": "rgba(0,0,255,.75)",
-							            "line-width": 2
-							        }
-							    });
-});
-
 function addCirculo(lat, long, cont, color) {
     map.addLayer({
         "id": "point"+cont,
