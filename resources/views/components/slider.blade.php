@@ -482,7 +482,7 @@
 
                 title: {
                     fontFamily: "Righteous",
-                    text: "Numero de Ataques por portas"
+                    text: "Número de Ataques por portas"
                 },
                 axisX: {
                     interval: 1
@@ -539,7 +539,7 @@
                 colorSet: "colorArray",
                 title: {
                     fontFamily: "Righteous",
-                    text: "Numero de Ataques por portas e protocolos"
+                    text: "Número de Ataques por porta e protocolo"
                 },
                 axisX: {
                     interval: 1
@@ -547,7 +547,7 @@
                 axisY2: {
                     interlacedColor: "rgba(58,122,94,.1)",
                     gridColor: "rgba(58,122,94,.1)",
-                    title: "As 10 portas e protocolos mais atacadas"
+                    title: "O protocolo usado nas 10 portas mais atacadas"
                 },
                 legend: {
                     horizontalAlign: "left", // "center" , "right"
@@ -639,7 +639,7 @@
 
                 title: {
                     fontFamily: "Righteous",
-                    text: "Numero de Ataques por cidades e portas"
+                    text: "Número de Ataques por cidade e porta"
                 },
                 axisX: {
                     interval: 1
@@ -647,7 +647,7 @@
                 axisY: {
                     interlacedColor: "rgba(58,122,94,.1)",
                     gridColor: "rgba(58,122,94,.1)",
-                    title: "As 10 cidades e portas mais atacadas"
+                    title: "A porta mais usada nas 10 cidades mais atacadas"
                 },
                 data: [{
                     indexLabelFontFamily: "Righteous",
@@ -693,7 +693,7 @@
                 colorSet: "colorArray",
                 title: {
                     fontFamily: "Righteous",
-                    text: "Numero de Ataques por portas e protocolos"
+                    text: "Número de Ataques por cidade e protocolo"
                 },
                 axisX: {
                     interval: 1
@@ -701,7 +701,7 @@
                 axisY2: {
                     interlacedColor: "rgba(58,122,94,.1)",
                     gridColor: "rgba(58,122,94,.1)",
-                    title: "As 10 portas e protocolos mais atacadas"
+                    title: "O protocolo mais usado nas 10 cidades mais atacadas"
                 },
                 legend: {
                     horizontalAlign: "left", // "center" , "right"
@@ -761,7 +761,7 @@
                 colorSet: "colorArray",
                 title: {
                     fontFamily: "Righteous",
-                    text: "Numero de Ataques por portas e protocolos"
+                    text: "Número de Ataques por cidade, porta e protocolo"
                 },
                 axisX: {
                     interval: 1
@@ -769,7 +769,7 @@
                 axisY: {
                     interlacedColor: "rgba(58,122,94,.1)",
                     gridColor: "rgba(58,122,94,.1)",
-                    title: "As 10 portas e protocolos mais atacadas"
+                    title: "A porta e o protocolo mais usados nas 10 cidades mais atacadas"
                 },
                 legend: {
                     horizontalAlign: "left", // "center" , "right"
@@ -819,7 +819,7 @@
 
                 title: {
                     fontFamily: "Righteous",
-                    text: "Numero de Ataques por países"
+                    text: "Número de Ataques por países"
                 },
                 axisX: {
                     interval: 1
@@ -827,7 +827,7 @@
                 axisY2: {
                     interlacedColor: "rgba(58,122,94,.1)",
                     gridColor: "rgba(58,122,94,.1)",
-                    title: "Os 10 países mais atacadas"
+                    title: "Os 10 países mais atacados"
                 },
                 data: [{
                     indexLabelFontFamily: "Righteous",
@@ -862,7 +862,7 @@
 
                 title: {
                     fontFamily: "Righteous",
-                    text: "Numero de Ataques por cidades e portas"
+                    text: "Número de Ataques por países e portas"
                 },
                 axisX: {
                     interval: 1
@@ -870,7 +870,7 @@
                 axisY: {
                     interlacedColor: "rgba(58,122,94,.1)",
                     gridColor: "rgba(58,122,94,.1)",
-                    title: "As 10 cidades e portas mais atacadas"
+                    title: "As 10 portas mais atacas nos paises mais atacados"
                 },
                 data: [{
                     indexLabelFontFamily: "Righteous",
@@ -916,7 +916,7 @@
                 colorSet: "colorArray",
                 title: {
                     fontFamily: "Righteous",
-                    text: "Numero de Ataques por portas e protocolos"
+                    text: "Número de Ataques por país, porta e protocolo"
                 },
                 axisX: {
                     interval: 1
@@ -924,7 +924,7 @@
                 axisY: {
                     interlacedColor: "rgba(58,122,94,.1)",
                     gridColor: "rgba(58,122,94,.1)",
-                    title: "As 10 portas e protocolos mais atacadas"
+                    title: "A porta e protocolo mais usados nos 10 paises mais atacados"
                 },
                 legend: {
                     horizontalAlign: "left", // "center" , "right"
@@ -984,7 +984,7 @@
                 colorSet: "colorArray",
                 title: {
                     fontFamily: "Righteous",
-                    text: "Numero de Ataques por países e protocolos"
+                    text: "Número de Ataques por paíse e protocolo"
                 },
                 axisX: {
                     interval: 1
@@ -992,7 +992,7 @@
                 axisY2: {
                     interlacedColor: "rgba(58,122,94,.1)",
                     gridColor: "rgba(58,122,94,.1)",
-                    title: "Os 10 países e protocolos mais atacadas"
+                    title: "O protocolo mais usado nos 10 paises mais atacados"
                 },
                 legend: {
                     horizontalAlign: "left", // "center" , "right"
@@ -1041,7 +1041,7 @@
 
                 title: {
                     fontFamily: "Righteous",
-                    text: "Numero de Ataques por IP"
+                    text: "Número de Ataques por IP"
                 },
                 axisX: {
                     interval: 1
@@ -1049,7 +1049,7 @@
                 axisY2: {
                     interlacedColor: "rgba(58,122,94,.1)",
                     gridColor: "rgba(58,122,94,.1)",
-                    title: "Os 10 IP mais atacadas"
+                    title: "Os 10 IP's mais atacados"
                 },
                 data: [{
                     indexLabelFontFamily: "Righteous",
@@ -1084,7 +1084,7 @@
 
                 title: {
                     fontFamily: "Righteous",
-                    text: "Numero de Ataques por IP e portas"
+                    text: "Número de Ataques por IP e portas"
                 },
                 axisX: {
                     interval: 1
@@ -1092,7 +1092,7 @@
                 axisY: {
                     interlacedColor: "rgba(58,122,94,.1)",
                     gridColor: "rgba(58,122,94,.1)",
-                    title: "Os 10 IP e portas mais atacadas"
+                    title: "As portas mais usadas nos 10 ip's mais atacados"
                 },
                 data: [{
                     indexLabelFontFamily: "Righteous",
@@ -1138,7 +1138,7 @@
                 colorSet: "colorArray",
                 title: {
                     fontFamily: "Righteous",
-                    text: "Numero de Ataques por IP e protocolos"
+                    text: "Número de Ataques por IP e protocolo"
                 },
                 axisX: {
                     interval: 1
@@ -1146,7 +1146,7 @@
                 axisY2: {
                     interlacedColor: "rgba(58,122,94,.1)",
                     gridColor: "rgba(58,122,94,.1)",
-                    title: "Os 10 IP e protocolos mais atacadas"
+                    title: "O protocolo mais usado nos 10 ip's mais atacados"
                 },
                 legend: {
                     horizontalAlign: "left", // "center" , "right"
@@ -1206,7 +1206,7 @@
                 colorSet: "colorArray",
                 title: {
                     fontFamily: "Righteous",
-                    text: "Numero de Ataques por IP e protocolos"
+                    text: "Número de Ataques por protocolo"
                 },
                 axisX: {
                     interval: 1
@@ -1214,7 +1214,7 @@
                 axisY2: {
                     interlacedColor: "rgba(58,122,94,.1)",
                     gridColor: "rgba(58,122,94,.1)",
-                    title: "Os 10 IP e protocolos mais atacadas"
+                    title: "Quantidade de ataques por protocolo"
                 },
                 legend: {
                     horizontalAlign: "left", // "center" , "right"
