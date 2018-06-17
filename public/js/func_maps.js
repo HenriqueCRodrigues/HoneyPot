@@ -78,7 +78,7 @@ document.getElementById('addLinha').addEventListener('click', function () {
 							    });
 });
 
-function addCirculo(lat, long, cont) {
+function addCirculo(lat, long, cont, color) {
     map.addLayer({
         "id": "point"+cont,
         "type": "circle",
@@ -88,16 +88,13 @@ function addCirculo(lat, long, cont) {
 				"type": "Feature",
 				"geometry": {
 					"type": "LineString",
-					"coordinates": [
-							    [lat, long],
-							    [-46.625, -23.53]
-					]
+					"coordinates": [[lat,long], [null, null]]
 				}
 			}
         },
         "paint": {
             "circle-radius": 2,
-            "circle-color": "#007cbf"
+            "circle-color": color
         }
     });
 };

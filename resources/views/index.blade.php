@@ -245,7 +245,15 @@
                             }
 
                             if (key === 'type') {
-                                addCirculo(lat, lon, shuffle.substr(shuffle.length - 9));
+                                var color;
+                                if (value === 'TCP') {
+                                    color = "#ff0000";
+
+                                } else {
+                                    color = "#0000ff";
+								}
+
+                                addCirculo(lat, lon, shuffle.substr(shuffle.length - 9), color);
                             }
 
                         });
