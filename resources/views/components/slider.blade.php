@@ -479,7 +479,10 @@
             });
 
             chart.render();
-            document.getElementById("chartContainer1L").remove()
+            var loading = document.getElementById("chartContainer1L");
+            if (loading) {
+                loading.remove()
+            }
         })};
 
     var forPortAndProtocol = function() {$.post('report/for-port-and-protocol', {_token: "{{ csrf_token() }}"})
@@ -547,7 +550,10 @@
             });
 
             chart.render();
-            document.getElementById("chartContainer2L").remove()
+            var loading = document.getElementById("chartContainer2L");
+            if (loading) {
+                loading.remove()
+            }
 
         })};
 
@@ -587,7 +593,10 @@
             });
 
             chart.render();
-            document.getElementById("chartContainer3L").remove()
+            var loading = document.getElementById("chartContainer3L");
+            if (loading) {
+                loading.remove()
+            }
 
         })};
 
@@ -627,7 +636,10 @@
             });
 
             chart.render();
-            document.getElementById("chartContainer4L").remove()
+            var loading = document.getElementById("chartContainer4L");
+            if (loading) {
+                loading.remove()
+            }
 
         })};
 
@@ -692,7 +704,10 @@
             });
 
             chart.render();
-            document.getElementById("chartContainer5L").remove()
+            var loading = document.getElementById("chartContainer5L");
+            if (loading) {
+                loading.remove()
+            }
 
         })};
 
@@ -732,7 +747,10 @@
             });
 
             chart.render();
-            document.getElementById("chartContainer6L").remove()
+            var loading = document.getElementById("chartContainer6L");
+            if (loading) {
+                loading.remove()
+            }
 
         })};
 
@@ -772,7 +790,10 @@
             });
 
             chart.render();
-            document.getElementById("chartContainer7L").remove()
+            var loading = document.getElementById("chartContainer7L");
+            if (loading) {
+                loading.remove()
+            }
 
         })};
 
@@ -837,7 +858,10 @@
             });
 
             chart.render();
-            document.getElementById("chartContainer8L").remove()
+            var loading = document.getElementById("chartContainer8L");
+            if (loading) {
+                loading.remove()
+            }
 
         })};
 
@@ -877,7 +901,10 @@
             });
 
             chart.render();
-            document.getElementById("chartContainer9L").remove()
+            var loading = document.getElementById("chartContainer9L");
+            if (loading) {
+                loading.remove()
+            }
 
         })};
 
@@ -917,7 +944,10 @@
             });
 
             chart.render();
-            document.getElementById("chartContainer10L").remove()
+            var loading = document.getElementById("chartContainer10L");
+            if (loading) {
+                loading.remove()
+            }
 
         })};
 
@@ -982,7 +1012,10 @@
             });
 
             chart.render();
-            document.getElementById("chartContainer11L").remove()
+            var loading = document.getElementById("chartContainer11L");
+            if (loading) {
+                loading.remove()
+            }
 
         })};
 
@@ -1047,7 +1080,11 @@
             });
 
             chart.render();
-            document.getElementById("chartContainer12L").remove()
+
+            var loading = document.getElementById("chartContainer12L");
+            if (loading) {
+                loading.remove()
+            }
 
         })};
 
