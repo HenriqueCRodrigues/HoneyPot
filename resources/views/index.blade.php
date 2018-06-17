@@ -136,11 +136,6 @@
 							<div class="menu">
 								<div class="overlay">
 									<div class="menu-content">
-										<div class="menu-title">
-											RELATÓRIOS
-										</div>
-										<input type="button" value="Add Linha" id="addLinha" class="menu-btns"/><br>
-										<input type="button" value="Add Circulo"  onclick="addCirculo('2.349014', '48.864716')" id="addCirculo" class="menu-btns"/><br>
 										
 										<div class="menu-title">
 											LOCALIZAÇÃO
