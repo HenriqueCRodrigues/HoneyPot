@@ -253,7 +253,7 @@
                                     color = "#0000ff";
 								}
 
-                                addCirculo(lat, lon, shuffle.substr(shuffle.length - 9), color);
+                                addCirculo(parseInt(lon), parseInt(lat), shuffle.substr(shuffle.length - 9), color);
                             }
 
                         });
