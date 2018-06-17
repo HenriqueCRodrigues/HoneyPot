@@ -213,22 +213,18 @@
 
 <script src="js/jquery.js"></script>
 <script>
-    var prev, prox;
+    var prev, prox, callFunction;
 
-    $(document).ready(function() {
-        forPort();
-    });
-
-    $(".jssora061").click(function () {
+    callFunction = function (direction) {
         /** DIV 1 => FORPORT**/
         prev = document.getElementById("11").style.cssText.indexOf('transform') === -1;
         prox = document.getElementById("2").style.cssText.indexOf('transform') === -1;
 
-        if (prev && this.getAttribute("data-u") === 'arrowright') {
+        if (prev && direction === 'arrowright') {
             forPort()
         }
 
-        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+        if (prox && direction === 'arrowleft') {
             forPort()
         }
 
@@ -237,11 +233,11 @@
         prev = document.getElementById("1").style.cssText.indexOf('transform') === -1;
         prox = document.getElementById("3").style.cssText.indexOf('transform') === -1;
 
-        if (prev && this.getAttribute("data-u") === 'arrowright') {
+        if (prev && direction === 'arrowright') {
             forPortAndProtocol()
         }
 
-        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+        if (prox && direction === 'arrowleft') {
             forPortAndProtocol()
         }
 
@@ -250,11 +246,11 @@
         prev = document.getElementById("2").style.cssText.indexOf('transform') === -1;
         prox = document.getElementById("4").style.cssText.indexOf('transform') === -1;
 
-        if (prev && this.getAttribute("data-u") === 'arrowright') {
+        if (prev && direction === 'arrowright') {
             forCity()
         }
 
-        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+        if (prox && direction === 'arrowleft') {
             forCity()
         }
 
@@ -263,11 +259,11 @@
         prev = document.getElementById("3").style.cssText.indexOf('transform') === -1;
         prox = document.getElementById("5").style.cssText.indexOf('transform') === -1;
 
-        if (prev && this.getAttribute("data-u") === 'arrowright') {
+        if (prev && direction === 'arrowright') {
             forCityAndPort()
         }
 
-        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+        if (prox && direction === 'arrowleft') {
             forCityAndPort()
         }
 
@@ -276,11 +272,11 @@
         prev = document.getElementById("4").style.cssText.indexOf('transform') === -1;
         prox = document.getElementById("6").style.cssText.indexOf('transform') === -1;
 
-        if (prev && this.getAttribute("data-u") === 'arrowright') {
+        if (prev && direction === 'arrowright') {
             forCityAndProtocol()
         }
 
-        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+        if (prox && direction === 'arrowleft') {
             forCityAndProtocol()
         }
 
@@ -288,11 +284,11 @@
         prev = document.getElementById("5").style.cssText.indexOf('transform') === -1;
         prox = document.getElementById("7").style.cssText.indexOf('transform') === -1;
 
-        if (prev && this.getAttribute("data-u") === 'arrowright') {
+        if (prev && direction === 'arrowright') {
             forCountry()
         }
 
-        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+        if (prox && direction === 'arrowleft') {
             forCountry()
         }
 
@@ -300,11 +296,11 @@
         prev = document.getElementById("6").style.cssText.indexOf('transform') === -1;
         prox = document.getElementById("8").style.cssText.indexOf('transform') === -1;
 
-        if (prev && this.getAttribute("data-u") === 'arrowright') {
+        if (prev && direction === 'arrowright') {
             forCountryAndPort()
         }
 
-        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+        if (prox && direction === 'arrowleft') {
             forCountryAndPort()
         }
 
@@ -313,11 +309,11 @@
         prev = document.getElementById("7").style.cssText.indexOf('transform') === -1;
         prox = document.getElementById("9").style.cssText.indexOf('transform') === -1;
 
-        if (prev && this.getAttribute("data-u") === 'arrowright') {
+        if (prev && direction === 'arrowright') {
             forCountryAndProtocol()
         }
 
-        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+        if (prox && direction === 'arrowleft') {
             forCountryAndProtocol()
         }
 
@@ -326,11 +322,11 @@
         prev = document.getElementById("8").style.cssText.indexOf('transform') === -1;
         prox = document.getElementById("10").style.cssText.indexOf('transform') === -1;
 
-        if (prev && this.getAttribute("data-u") === 'arrowright') {
+        if (prev && direction === 'arrowright') {
             forIP()
         }
 
-        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+        if (prox && direction === 'arrowleft') {
             forIP()
         }
 
@@ -339,11 +335,11 @@
         prev = document.getElementById("9").style.cssText.indexOf('transform') === -1;
         prox = document.getElementById("11").style.cssText.indexOf('transform') === -1;
 
-        if (prev && this.getAttribute("data-u") === 'arrowright') {
+        if (prev && direction === 'arrowright') {
             forIPAndPort()
         }
 
-        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+        if (prox && direction === 'arrowleft') {
             forIPAndPort()
         }
 
@@ -352,11 +348,11 @@
         prev = document.getElementById("10").style.cssText.indexOf('transform') === -1;
         prox = document.getElementById("12").style.cssText.indexOf('transform') === -1;
 
-        if (prev && this.getAttribute("data-u") === 'arrowright') {
+        if (prev && direction === 'arrowright') {
             forIPAndProtocol()
         }
 
-        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+        if (prox && direction === 'arrowleft') {
             forIPAndProtocol()
         }
 
@@ -365,14 +361,37 @@
         prev = document.getElementById("11").style.cssText.indexOf('transform') === -1;
         prox = document.getElementById("1").style.cssText.indexOf('transform') === -1;
 
-        if (prev && this.getAttribute("data-u") === 'arrowright') {
+        if (prev && direction === 'arrowright') {
             forProtocol()
         }
 
-        if (prox && this.getAttribute("data-u") === 'arrowleft') {
+        if (prox && direction === 'arrowleft') {
             forProtocol()
         }
+    };
+
+    $(document).ready(function() {
+        forPort();
     });
+
+    $(document).keydown(function(e) {
+        var direction;
+        if(e.keyCode === 37) {
+            direction = 'arrowleft'
+        }//left
+
+        if (e.keyCode === 39){
+            direction = 'arrowright'
+        }//right
+
+        callFunction(direction)
+
+    });
+
+    $(".jssora061").click(function () {
+        callFunction(this.getAttribute("data-u"))
+    });
+
 
 
     var forPort = function() {$.post('report/for-port', {_token: "{{ csrf_token() }}"})
@@ -968,6 +987,5 @@
 
             chart.render();
         })};
-
 
 </script>
