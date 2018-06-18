@@ -1006,75 +1006,6 @@
 
         })};
 
-    var forCountryPortAndProtocol = function() {$.post('report/for-country-port-and-protocol', {_token: "{{ csrf_token() }}"})
-        .done(function (data) {
-            var i;
-            var objectTCP = [];
-            var objectUDP = [];
-            var objectColor = [];
-
-            for (i = data.length - 1; i >= 0; i--) {
-                if (data[i].type === 'TCP') {
-                    objectTCP.push({y: data[i].total, label: data[i].name+' '+data[i].port});
-                    objectUDP.push({y: 0});
-                    objectColor.push('#ff0000');
-                } else {
-                    objectTCP.push({y: 0});
-                    objectUDP.push({y: data[i].total, label: data[i].name+' '+data[i].port});
-                    objectColor.push('#0000ff');
-                }
-            }
-
-
-            var chart = new CanvasJS.Chart("chartContainer8", {
-                animationEnabled: true,
-                theme: "dark1",
-                colorSet: "colorArray",
-                title: {
-                    fontFamily: "Righteous",
-                    text: "Número de Ataques por país, porta e protocolo"
-                },
-                axisX: {
-                    interval: 1
-                },
-                axisY: {
-                    interlacedColor: "rgba(58,122,94,.1)",
-                    gridColor: "rgba(58,122,94,.1)",
-                    title: "A porta e protocolo mais usados nos 10 paises mais atacados"
-                },
-                legend: {
-                    horizontalAlign: "left", // "center" , "right"
-                    verticalAlign: "center",  // "top" , "bottom"
-                    fontSize: 15
-                },
-                data: [{
-                    indexLabelFontFamily: "Righteous",
-                    type: "column",
-                    name: "companies",
-                    axisYType: "primary",
-                    showInLegend: true,
-                    legendText: 'TCP',
-                    dataPoints: objectTCP
-                },{
-                    indexLabelFontFamily: "Righteous",
-                    type: "column",
-                    name: "companies",
-                    axisYType: "primary",
-                    showInLegend: true,
-                    legendText: 'UDP',
-                    dataPoints: objectUDP
-                }]
-            });
-
-            chart.render();
-            var loading = document.getElementById("chartContainer8L");
-            if (loading) {
-                loading.remove();
-                document.getElementById("chartContainer8D").style.visibility = 'visible'
-            }
-
-        })};
-
     var forCountryAndProtocol = function() {$.post('report/for-country-and-protocol', {_token: "{{ csrf_token() }}"})
         .done(function (data) {
             var i;
@@ -1095,7 +1026,7 @@
             }
 
 
-            var chart = new CanvasJS.Chart("chartContainer9", {
+            var chart = new CanvasJS.Chart("chartContainer8", {
                 animationEnabled: true,
                 theme: "dark1",
                 colorSet: "colorArray",
@@ -1129,6 +1060,75 @@
                     type: "bar",
                     name: "companies",
                     axisYType: "secondary",
+                    showInLegend: true,
+                    legendText: 'UDP',
+                    dataPoints: objectUDP
+                }]
+            });
+
+            chart.render();
+            var loading = document.getElementById("chartContainer8L");
+            if (loading) {
+                loading.remove();
+                document.getElementById("chartContainer8D").style.visibility = 'visible'
+            }
+
+        })};
+
+    var forCountryPortAndProtocol = function() {$.post('report/for-country-port-and-protocol', {_token: "{{ csrf_token() }}"})
+        .done(function (data) {
+            var i;
+            var objectTCP = [];
+            var objectUDP = [];
+            var objectColor = [];
+
+            for (i = data.length - 1; i >= 0; i--) {
+                if (data[i].type === 'TCP') {
+                    objectTCP.push({y: data[i].total, label: data[i].name+' '+data[i].port});
+                    objectUDP.push({y: 0});
+                    objectColor.push('#ff0000');
+                } else {
+                    objectTCP.push({y: 0});
+                    objectUDP.push({y: data[i].total, label: data[i].name+' '+data[i].port});
+                    objectColor.push('#0000ff');
+                }
+            }
+
+
+            var chart = new CanvasJS.Chart("chartContainer9", {
+                animationEnabled: true,
+                theme: "dark1",
+                colorSet: "colorArray",
+                title: {
+                    fontFamily: "Righteous",
+                    text: "Número de Ataques por país, porta e protocolo"
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY: {
+                    interlacedColor: "rgba(58,122,94,.1)",
+                    gridColor: "rgba(58,122,94,.1)",
+                    title: "A porta e protocolo mais usados nos 10 paises mais atacados"
+                },
+                legend: {
+                    horizontalAlign: "left", // "center" , "right"
+                    verticalAlign: "center",  // "top" , "bottom"
+                    fontSize: 15
+                },
+                data: [{
+                    indexLabelFontFamily: "Righteous",
+                    type: "column",
+                    name: "companies",
+                    axisYType: "primary",
+                    showInLegend: true,
+                    legendText: 'TCP',
+                    dataPoints: objectTCP
+                },{
+                    indexLabelFontFamily: "Righteous",
+                    type: "column",
+                    name: "companies",
+                    axisYType: "primary",
                     showInLegend: true,
                     legendText: 'UDP',
                     dataPoints: objectUDP
