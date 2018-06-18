@@ -537,10 +537,23 @@
     });
 
     function downloadCSV(link) {
-        $.post(link, {_token: "{{ csrf_token() }}", download: true})
-            .done(function (data) {
-                alert('CSV baixado com sucesso');
-            });
+        $.ajax({
+            cache: false,
+            url: link, //GET route
+            method: 'POST',
+            data:  {_token: "{{ csrf_token() }}", download: true}, //your parameters data here
+            success: function (response, textStatus, request) {
+                var a = document.createElement("a");
+                a.href = response.file;
+                a.download = response.name+'.xlsx';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            },
+            error: function (ajaxContext) {
+                toastr.error('Export error: '+ajaxContext.responseText);
+            }
+        });
     }
 
     $(document).keydown(function(e) {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Attack;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ReportController extends Controller
 {
@@ -63,17 +64,46 @@ class ReportController extends Controller
         ])->get();
     }
 
-    public function forPortAndProtocol()
+    public function forPortAndProtocol(Request $request)
     {
         $ports =  \DB::table('attacks')
-                 ->limit(10)
-                 ->select('port', 'protocols.type', \DB::raw('count(*) as total'))
-                 ->join('protocols', 'attacks.protocol_id', '=', 'protocols.id')
-                 ->orderByDesc('total')
-                 ->groupBy('port', 'protocol_id')
-                 ->get();
+            ->select('port', 'protocols.type', \DB::raw('count(*) as total'))
+            ->join('protocols', 'attacks.protocol_id', '=', 'protocols.id')
+            ->orderByDesc('total')
+            ->groupBy('port', 'protocol_id');
 
-        return $ports;
+        if($request->download) {
+            $myFile = Excel::create('Relatório de ataques de portas e protocolos', function ($excel) use ($ports) {
+
+                $excel->sheet('Relatório', function ($sheet) use ($ports) {
+                    $sheet->appendRow([
+                        'PORTA',
+                        'PROTOCOLO',
+                        'TOTAL',
+                    ]);
+
+                    foreach($ports->get() as $port) {
+                        $sheet->appendRow([
+                            $port->port,
+                            $port->type,
+                            $port->total,
+                        ]);
+                    }
+                });
+            });
+
+
+            $myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+            $response =  array(
+                'name' => "Relatório de ataques de portas e protocolos", //no extention needed
+                'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,".base64_encode($myFile) //mime type of used format
+            );
+            return response()->json($response);
+        }
+
+
+
+        return $ports->limit(10)->get();
     }
 
     public function forCity()
