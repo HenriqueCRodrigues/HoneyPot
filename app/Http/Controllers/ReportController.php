@@ -42,11 +42,11 @@ class ReportController extends Controller
     public function forPort()
     {
         $ports = \DB::table('attacks')
-                 ->limit(10)
-                 ->select('port', \DB::raw('count(*) as total'))
-                 ->orderByDesc('total')
-                 ->groupBy('port')
-                 ->get();
+            ->limit(10)
+            ->select('port', \DB::raw('count(*) as total'))
+            ->orderByDesc('total')
+            ->groupBy('port')
+            ->get();
 
         return response()->json($ports);
     }
@@ -66,13 +66,13 @@ class ReportController extends Controller
 
     public function forPortAndProtocol(Request $request)
     {
-        $ports =  \DB::table('attacks')
+        $ports = \DB::table('attacks')
             ->select('port', 'protocols.type', \DB::raw('count(*) as total'))
             ->join('protocols', 'attacks.protocol_id', '=', 'protocols.id')
             ->orderByDesc('total')
             ->groupBy('port', 'protocol_id');
 
-        if($request->download) {
+        if ($request->download) {
             $myFile = Excel::create('Relatório de ataques de portas e protocolos', function ($excel) use ($ports) {
 
                 $excel->sheet('Relatório', function ($sheet) use ($ports) {
@@ -82,7 +82,7 @@ class ReportController extends Controller
                         'TOTAL',
                     ]);
 
-                    foreach($ports->get() as $port) {
+                    foreach ($ports->get() as $port) {
                         $sheet->appendRow([
                             $port->port,
                             $port->type,
@@ -94,30 +94,54 @@ class ReportController extends Controller
 
 
             $myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
-            $response =  array(
+            $response = [
                 'name' => "Relatório de ataques de portas e protocolos", //no extention needed
-                'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,".base64_encode($myFile) //mime type of used format
-            );
+                'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," . base64_encode($myFile) //mime type of used format
+            ];
             return response()->json($response);
         }
-
-
 
         return $ports->limit(10)->get();
     }
 
-    public function forCity()
+    public function forCity(Request $request)
     {
 
-       $city =  \DB::table('attacks')
-                 ->limit(10)
-                 ->select('cities.name', \DB::raw('count(*) as total'))
-                 ->join('cities','attacks.city_id', '=', 'cities.id')
-                 ->orderByDesc('total')
-                 ->groupBy('city_id')
-                 ->get();
+        $city = \DB::table('attacks')
+            ->select('cities.name', \DB::raw('count(*) as total'))
+            ->join('cities', 'attacks.city_id', '=', 'cities.id')
+            ->orderByDesc('total')
+            ->groupBy('city_id');
 
-        return $city;
+        if ($request->download) {
+            $myFile = Excel::create('Relatório de ataques por cidades', function ($excel) use ($city) {
+
+                $excel->sheet('Relatório', function ($sheet) use ($city) {
+                    $sheet->appendRow([
+                        'CIDADE',
+                        'TOTAL',
+                    ]);
+
+                    foreach ($city->get() as $c) {
+                        $sheet->appendRow([
+                            $c->name,
+                            $c->total,
+                        ]);
+                    }
+                });
+            });
+
+
+            $myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+            $response = [
+                'name' => "Relatório de ataques por cidades", //no extention needed
+                'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," . base64_encode($myFile) //mime type of used format
+            ];
+            return response()->json($response);
+        }
+
+
+        return $city->limit(10)->get();
     }
 
     public function forCityAndDate(Request $request)
@@ -133,29 +157,86 @@ class ReportController extends Controller
         ])->get();
     }
 
-    public function forCityAndPort()
+    public function forCityAndPort(Request $request)
     {
         $city = \DB::table('attacks')
-                 ->limit(10)
-                 ->select('cities.name', 'attacks.port', \DB::raw('count(*) as total'))
-                 ->join('cities','attacks.city_id', '=', 'cities.id')
-                 ->orderByDesc('total')
-                 ->groupBy('city_id', 'port')
-                 ->get();
-        return $city;
+            ->select('cities.name', 'attacks.port', \DB::raw('count(*) as total'))
+            ->join('cities', 'attacks.city_id', '=', 'cities.id')
+            ->orderByDesc('total')
+            ->groupBy('city_id', 'port');
+
+        if ($request->download) {
+            $myFile = Excel::create('Relatório de ataques por cidades e portas', function ($excel) use ($city) {
+
+                $excel->sheet('Relatório', function ($sheet) use ($city) {
+                    $sheet->appendRow([
+                        'CIDADE',
+                        'PORTA',
+                        'TOTAL',
+                    ]);
+
+                    foreach ($city->get() as $c) {
+                        $sheet->appendRow([
+                            $c->name,
+                            $c->port,
+                            $c->total,
+                        ]);
+                    }
+                });
+            });
+
+
+            $myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+            $response = [
+                'name' => "Relatório de ataques por cidades e portas", //no extention needed
+                'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," . base64_encode($myFile) //mime type of used format
+            ];
+            return response()->json($response);
+        }
+
+
+        return $city->limit(10)->get();
     }
 
     public function forCityAndProtocol(Request $request)
     {
         $city = \DB::table('attacks')
-                 ->limit(10)
-                 ->select('cities.name', 'protocols.type', \DB::raw('count(*) as total'))
-                 ->join('cities','attacks.city_id', '=', 'cities.id')
-                 ->join('protocols','attacks.protocol_id', '=', 'protocols.id')
-                 ->orderByDesc('total')
-                 ->groupBy('city_id', 'protocol_id')
-                 ->get();
-        return $city;
+            ->select('cities.name', 'protocols.type', \DB::raw('count(*) as total'))
+            ->join('cities', 'attacks.city_id', '=', 'cities.id')
+            ->join('protocols', 'attacks.protocol_id', '=', 'protocols.id')
+            ->orderByDesc('total')
+            ->groupBy('city_id', 'protocol_id');
+
+        if ($request->download) {
+            $myFile = Excel::create('Relatório de ataques por cidades e protocolos', function ($excel) use ($city) {
+
+                $excel->sheet('Relatório', function ($sheet) use ($city) {
+                    $sheet->appendRow([
+                        'CIDADE',
+                        'PROTOCOLO',
+                        'TOTAL',
+                    ]);
+
+                    foreach ($city->get() as $c) {
+                        $sheet->appendRow([
+                            $c->name,
+                            $c->type,
+                            $c->total,
+                        ]);
+                    }
+                });
+            });
+
+
+            $myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+            $response = [
+                'name' => "Relatório de ataques por cidades e protocolos", //no extention needed
+                'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," . base64_encode($myFile) //mime type of used format
+            ];
+            return response()->json($response);
+        }
+
+        return $city->limit(10)->get();
     }
 
     public function forCityDateAndPort(Request $request)
@@ -190,30 +271,86 @@ class ReportController extends Controller
         ])->get();
     }
 
-    public function forCityPortAndProtocol()
+    public function forCityPortAndProtocol(Request $request)
     {
         $city = \DB::table('attacks')
-            ->limit(10)
             ->select('cities.name', 'attacks.port', 'protocols.type', \DB::raw('count(*) as total'))
-            ->join('cities','attacks.city_id', '=', 'cities.id')
-            ->join('protocols','attacks.protocol_id', '=', 'protocols.id')
+            ->join('cities', 'attacks.city_id', '=', 'cities.id')
+            ->join('protocols', 'attacks.protocol_id', '=', 'protocols.id')
             ->orderByDesc('total')
-            ->groupBy('city_id', 'port', 'protocol_id')
-            ->get();
-        return $city;
+            ->groupBy('city_id', 'port', 'protocol_id');
+
+        if ($request->download) {
+            $myFile = Excel::create('Relatório de ataques por cidades, portas e protocolos', function ($excel) use ($city) {
+
+                $excel->sheet('Relatório', function ($sheet) use ($city) {
+                    $sheet->appendRow([
+                        'CIDADE',
+                        'PORTA',
+                        'PROTOCOLO',
+                        'TOTAL',
+                    ]);
+
+                    foreach ($city->get() as $c) {
+                        $sheet->appendRow([
+                            $c->name,
+                            $c->port,
+                            $c->type,
+                            $c->total,
+                        ]);
+                    }
+                });
+            });
+
+
+            $myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+            $response = [
+                'name' => "Relatório de ataques por cidades, portas e protocolos", //no extention needed
+                'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," . base64_encode($myFile) //mime type of used format
+            ];
+            return response()->json($response);
+        }
+
+        return $city->limit(10)->get();
     }
 
-    public function forCountry()
+    public function forCountry(Request $request)
     {
-           $country = \DB::table('attacks')
-                 ->limit(10)
-                 ->select('countries.name', \DB::raw('count(*) as total'))
-                 ->join('cities','attacks.city_id', '=', 'cities.id')
-                 ->join('countries','cities.country_id', '=', 'countries.id')
-                 ->orderByDesc('total')
-                 ->groupBy('countries.id')
-                 ->get();
-                 return $country;
+        $country = \DB::table('attacks')
+            ->select('countries.name', \DB::raw('count(*) as total'))
+            ->join('cities', 'attacks.city_id', '=', 'cities.id')
+            ->join('countries', 'cities.country_id', '=', 'countries.id')
+            ->orderByDesc('total')
+            ->groupBy('countries.id');
+
+        if ($request->download) {
+            $myFile = Excel::create('Relatório de ataques por país', function ($excel) use ($country) {
+
+                $excel->sheet('Relatório', function ($sheet) use ($country) {
+                    $sheet->appendRow([
+                        'PAÍS',
+                        'TOTAL',
+                    ]);
+
+                    foreach ($country->get() as $c) {
+                        $sheet->appendRow([
+                            $c->name,
+                            $c->total,
+                        ]);
+                    }
+                });
+            });
+
+
+            $myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+            $response = [
+                'name' => "Relatório de ataques por país", //no extention needed
+                'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," . base64_encode($myFile) //mime type of used format
+            ];
+            return response()->json($response);
+        }
+
+        return $country->limit(10)->get();
     }
 
     public function forCountryAndDate(Request $request)
@@ -230,31 +367,87 @@ class ReportController extends Controller
         ])->get();
     }
 
-    public function forCountryAndPort()
+    public function forCountryAndPort(Request $request)
     {
-         $country = \DB::table('attacks')
-                 ->limit(10)
-                 ->select('countries.name', 'attacks.port', \DB::raw('count(*) as total'))
-                 ->join('cities','attacks.city_id', '=', 'cities.id')
-                 ->join('countries','cities.country_id', '=', 'countries.id')
-                 ->orderByDesc('total')
-                 ->groupBy('countries.id', 'attacks.port')
-                 ->get();
-                 return $country;
+        $country = \DB::table('attacks')
+            ->select('countries.name', 'attacks.port', \DB::raw('count(*) as total'))
+            ->join('cities', 'attacks.city_id', '=', 'cities.id')
+            ->join('countries', 'cities.country_id', '=', 'countries.id')
+            ->orderByDesc('total')
+            ->groupBy('countries.id', 'attacks.port');
+
+        if ($request->download) {
+            $myFile = Excel::create('Relatório de ataques por país e portas', function ($excel) use ($country) {
+
+                $excel->sheet('Relatório', function ($sheet) use ($country) {
+                    $sheet->appendRow([
+                        'PAÍS',
+                        'PORTA',
+                        'TOTAL',
+                    ]);
+
+                    foreach ($country->get() as $c) {
+                        $sheet->appendRow([
+                            $c->name,
+                            $c->port,
+                            $c->total,
+                        ]);
+                    }
+                });
+            });
+
+
+            $myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+            $response = [
+                'name' => "Relatório de ataques por país e portas", //no extention needed
+                'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," . base64_encode($myFile) //mime type of used format
+            ];
+            return response()->json($response);
+        }
+
+        return $country->limit(10)->get();
     }
 
-    public function forCountryAndProtocol()
+    public function forCountryAndProtocol(Request $request)
     {
-          $country = \DB::table('attacks')
-                 ->limit(10)
-                 ->select('countries.name', 'protocols.type', \DB::raw('count(*) as total'))
-                 ->join('cities','attacks.city_id', '=', 'cities.id')
-                 ->join('countries','cities.country_id', '=', 'countries.id')
-                 ->join('protocols','attacks.protocol_id', '=', 'protocols.id')
-                 ->orderByDesc('total')
-                 ->groupBy('countries.id', 'attacks.protocol_id')
-                 ->get();
-                 return $country;
+        $country = \DB::table('attacks')
+            ->select('countries.name', 'protocols.type', \DB::raw('count(*) as total'))
+            ->join('cities', 'attacks.city_id', '=', 'cities.id')
+            ->join('countries', 'cities.country_id', '=', 'countries.id')
+            ->join('protocols', 'attacks.protocol_id', '=', 'protocols.id')
+            ->orderByDesc('total')
+            ->groupBy('countries.id', 'attacks.protocol_id');
+
+        if ($request->download) {
+            $myFile = Excel::create('Relatório de ataques por país e protocolo', function ($excel) use ($country) {
+
+                $excel->sheet('Relatório', function ($sheet) use ($country) {
+                    $sheet->appendRow([
+                        'PAÍS',
+                        'PROTOCOLO',
+                        'TOTAL',
+                    ]);
+
+                    foreach ($country->get() as $c) {
+                        $sheet->appendRow([
+                            $c->name,
+                            $c->type,
+                            $c->total,
+                        ]);
+                    }
+                });
+            });
+
+
+            $myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+            $response = [
+                'name' => "Relatório de ataques por país e protocolo", //no extention needed
+                'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," . base64_encode($myFile) //mime type of used format
+            ];
+            return response()->json($response);
+        }
+
+        return $country->limit(10)->get();
     }
 
     public function forCountryPortAndDate(Request $request)
@@ -289,64 +482,203 @@ class ReportController extends Controller
         ])->get();
     }
 
-    public function forCountryPortAndProtocol()
+    public function forCountryPortAndProtocol(Request $request)
     {
         $country = \DB::table('attacks')
-            ->limit(10)
             ->select('countries.name', 'attacks.port', 'protocols.type', \DB::raw('count(*) as total'))
-            ->join('cities','attacks.city_id', '=', 'cities.id')
-            ->join('countries','cities.country_id', '=', 'countries.id')
-            ->join('protocols','attacks.protocol_id', '=', 'protocols.id')
+            ->join('cities', 'attacks.city_id', '=', 'cities.id')
+            ->join('countries', 'cities.country_id', '=', 'countries.id')
+            ->join('protocols', 'attacks.protocol_id', '=', 'protocols.id')
             ->orderByDesc('total')
-            ->groupBy('countries.id', 'attacks.protocol_id', 'attacks.port')
-            ->get();
+            ->groupBy('countries.id', 'attacks.protocol_id', 'attacks.port');
 
-        return $country;
+        if ($request->download) {
+            $myFile = Excel::create('Relatório de ataques por país, porta e protocolo', function ($excel) use ($country) {
+
+                $excel->sheet('Relatório', function ($sheet) use ($country) {
+                    $sheet->appendRow([
+                        'PAÍS',
+                        'PORTA',
+                        'PROTOCOLO',
+                        'TOTAL',
+                    ]);
+
+                    foreach ($country->get() as $c) {
+                        $sheet->appendRow([
+                            $c->name,
+                            $c->port,
+                            $c->type,
+                            $c->total,
+                        ]);
+                    }
+                });
+            });
+
+
+            $myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+            $response = [
+                'name' => "Relatório de ataques por país, porta e protocolo", //no extention needed
+                'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," . base64_encode($myFile) //mime type of used format
+            ];
+            return response()->json($response);
+        }
+
+        return $country->limit(10)->get();
     }
 
-    public function forIp()
+    public function forIp(Request $request)
     {
         $ip = \DB::table('attacks')
-                 ->limit(10)
-                 ->select('dst_ip', \DB::raw('count(*) as total'))
-                 ->orderByDesc('total')
-                 ->groupBy('dst_ip')
-                 ->get();
-                 return $ip;
+            ->select('dst_ip', \DB::raw('count(*) as total'))
+            ->orderByDesc('total')
+            ->groupBy('dst_ip');
+
+        if ($request->download) {
+            $myFile = Excel::create('Relatório de ataques por IP', function ($excel) use ($ip) {
+
+                $excel->sheet('Relatório', function ($sheet) use ($ip) {
+                    $sheet->appendRow([
+                        'IP',
+                        'TOTAL',
+                    ]);
+
+                    foreach ($ip->get() as $i) {
+                        $sheet->appendRow([
+                            $i->dst_ip,
+                            $i->total,
+                        ]);
+                    }
+                });
+            });
+
+
+            $myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+            $response = [
+                'name' => "Relatório de ataques por IP", //no extention needed
+                'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," . base64_encode($myFile) //mime type of used format
+            ];
+            return response()->json($response);
+        }
+
+        return $ip->limit(10)->get();
     }
 
-    public function forIpAndPort()
-    {
-         $ip = \DB::table('attacks')
-                 ->limit(10)
-                 ->select('dst_ip', 'port', \DB::raw('count(*) as total'))
-                 ->orderByDesc('total')
-                 ->groupBy('dst_ip', 'port')
-                 ->get();
-                 return $ip;
-    }
-
-    public function forIpAndProtocol()
+    public function forIpAndPort(Request $request)
     {
         $ip = \DB::table('attacks')
-                 ->limit(10)
-                 ->select('dst_ip', 'protocols.type', \DB::raw('count(*) as total'))
-                 ->join('protocols', 'attacks.protocol_id', '=', 'protocols.id')
-                 ->orderByDesc('total')
-                 ->groupBy('dst_ip', 'protocol_id')
-                 ->get();
-                 return $ip;
+            ->select('dst_ip', 'port', \DB::raw('count(*) as total'))
+            ->orderByDesc('total')
+            ->groupBy('dst_ip', 'port');
+
+        if ($request->download) {
+            $myFile = Excel::create('Relatório de ataques por IP e porta', function ($excel) use ($ip) {
+
+                $excel->sheet('Relatório', function ($sheet) use ($ip) {
+                    $sheet->appendRow([
+                        'IP',
+                        'PORTA',
+                        'TOTAL',
+                    ]);
+
+                    foreach ($ip->get() as $i) {
+                        $sheet->appendRow([
+                            $i->dst_ip,
+                            $i->port,
+                            $i->total,
+                        ]);
+                    }
+                });
+            });
+
+
+            $myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+            $response = [
+                'name' => "Relatório de ataques por IP e porta", //no extention needed
+                'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," . base64_encode($myFile) //mime type of used format
+            ];
+            return response()->json($response);
+        }
+
+        return $ip->limit(10)->get();
     }
 
-    public function forProtocol()
+    public function forIpAndProtocol(Request $request)
     {
         $ip = \DB::table('attacks')
-                 ->select('protocols.type', \DB::raw('count(*) as total'))
-                 ->join('protocols', 'attacks.protocol_id', '=', 'protocols.id')
-                 ->orderByDesc('total')
-                 ->groupBy('protocol_id')
-                 ->get();
-                 return $ip;
+            ->select('dst_ip', 'protocols.type', \DB::raw('count(*) as total'))
+            ->join('protocols', 'attacks.protocol_id', '=', 'protocols.id')
+            ->orderByDesc('total')
+            ->groupBy('dst_ip', 'protocol_id');
+
+        if ($request->download) {
+            $myFile = Excel::create('Relatório de ataques por IP e protocolo', function ($excel) use ($ip) {
+
+                $excel->sheet('Relatório', function ($sheet) use ($ip) {
+                    $sheet->appendRow([
+                        'IP',
+                        'PROTOCOLO',
+                        'TOTAL',
+                    ]);
+
+                    foreach ($ip->get() as $i) {
+                        $sheet->appendRow([
+                            $i->dst_ip,
+                            $i->type,
+                            $i->total,
+                        ]);
+                    }
+                });
+            });
+
+
+            $myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+            $response = [
+                'name' => "Relatório de ataques por IP e protocolo", //no extention needed
+                'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," . base64_encode($myFile) //mime type of used format
+            ];
+            return response()->json($response);
+        }
+
+        return $ip->limit(10)->get();
+    }
+
+    public function forProtocol(Request $request)
+    {
+        $protocol = \DB::table('attacks')
+            ->select('protocols.type', \DB::raw('count(*) as total'))
+            ->join('protocols', 'attacks.protocol_id', '=', 'protocols.id')
+            ->orderByDesc('total')
+            ->groupBy('protocol_id');
+
+        if ($request->download) {
+            $myFile = Excel::create('Relatório de ataques por IP e protocolo', function ($excel) use ($protocol) {
+
+                $excel->sheet('Relatório', function ($sheet) use ($protocol) {
+                    $sheet->appendRow([
+                        'IP',
+                        'PROTOCOLO',
+                        'TOTAL',
+                    ]);
+
+                    foreach ($protocol->get() as $p) {
+                        $sheet->appendRow([
+                            $p->type,
+                            $p->total,
+                        ]);
+                    }
+                });
+            });
+
+
+            $myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+            $response = [
+                'name' => "Relatório de ataques por protocolo", //no extention needed
+                'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," . base64_encode($myFile) //mime type of used format
+            ];
+            return response()->json($response);
+        }
+
+        return $protocol->get();
     }
 
     public function forProtocolAndTime(Request $request)
