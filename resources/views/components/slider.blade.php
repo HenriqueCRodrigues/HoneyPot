@@ -148,9 +148,9 @@
 
                 <div id="chartContainer2D" style="visibility: hidden">
                     <br>
-                    <a href="#" style="color: #2e6da4;">
+                    <a onclick="downloadCSV('report/for-city')" style="color: #2e6da4;">
                         <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
-                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                        <u>Gerar relatório de todos os ataques por cidade</u></a>
                 </div>
 
             </div>
@@ -167,9 +167,9 @@
 
                 <div id="chartContainer3D" style="visibility: hidden">
                     <br>
-                    <a href="#" style="color: #2e6da4;">
+                    <a onclick="downloadCSV('report/for-city-and-port')" style="color: #2e6da4;">
                         <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
-                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                        <u>Gerar relatório de todos os ataques por cidade e porta</u></a>
                 </div>
             </div>
         </div>
@@ -185,9 +185,9 @@
 
                 <div id="chartContainer4D" style="visibility: hidden">
                     <br>
-                    <a href="#" style="color: #2e6da4;">
+                    <a onclick="downloadCSV('report/for-city-and-protocol')" style="color: #2e6da4;">
                         <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
-                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                        <u>Gerar relatório de todos os ataques por cidade e protocolo</u></a>
                 </div>
             </div>
         </div>
@@ -202,9 +202,9 @@
 
                 <div id="chartContainer5D" style="visibility: hidden">
                     <br>
-                    <a href="#" style="color: #2e6da4;">
+                    <a onclick="downloadCSV('report/for-city-port-and-protocol')" style="color: #2e6da4;">
                         <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
-                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                        <u>Gerar relatório de todos os ataques por cidade, porta e protocolo</u></a>
                 </div>
             </div>
         </div>
@@ -219,9 +219,9 @@
 
                 <div id="chartContainer6D" style="visibility: hidden">
                     <br>
-                    <a href="#" style="color: #2e6da4;">
+                    <a onclick="downloadCSV('report/for-country')"  style="color: #2e6da4;">
                         <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
-                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                        <u>Gerar relatório de todos os ataques por paises</u></a>
                 </div>
 
             </div>
@@ -237,9 +237,9 @@
 
                 <div id="chartContainer7D" style="visibility: hidden">
                     <br>
-                    <a href="#" style="color: #2e6da4;">
+                    <a onclick="downloadCSV('report/for-country-and-port')" style="color: #2e6da4;">
                         <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
-                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                        <u>Gerar relatório de todos os ataques por pais e portas</u></a>
                 </div>
             </div>
         </div>
@@ -253,9 +253,9 @@
                 <div id="chartContainer8" style="height: 360px; width: 100%;"></div>
                 <div id="chartContainer8D" style="visibility: hidden">
                     <br>
-                    <a href="#" style="color: #2e6da4;">
+                    <a onclick="downloadCSV('report/for-country-and-protocol')" style="color: #2e6da4;">
                         <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
-                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                        <u>Gerar relatório de todos os ataques por pais e protocolo</u></a>
                 </div>
             </div>
         </div>
@@ -269,9 +269,9 @@
                 <div id="chartContainer9" style="height: 360px; width: 100%;"></div>
                 <div id="chartContainer9D" style="visibility: hidden">
                     <br>
-                    <a href="#" style="color: #2e6da4;">
+                    <a onclick="downloadCSV('report/for-country-port-and-protocol')" style="color: #2e6da4;">
                         <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
-                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                        <u>Gerar relatório de todos os ataques por pais, porta e protocolo</u></a>
                 </div>
 
             </div>
@@ -286,9 +286,9 @@
                 <div id="chartContainer10" style="height: 360px; width: 100%;"></div>
                 <div id="chartContainer10D" style="visibility: hidden">
                     <br>
-                    <a href="#" style="color: #2e6da4;">
+                    <a onclick="downloadCSV('report/for-ip')"  style="color: #2e6da4;">
                         <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
-                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                        <u>Gerar relatório de todos os ataques por IP</u></a>
                 </div>
             </div>
         </div>
@@ -302,9 +302,9 @@
                 <div id="chartContainer11" style="height: 360px; width: 100%;"></div>
                 <div id="chartContainer11D" style="visibility: hidden">
                     <br>
-                    <a href="#" style="color: #2e6da4;">
+                    <a onclick="downloadCSV('report/for-ip-and-port')" style="color: #2e6da4;">
                         <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
-                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                        <u>Gerar relatório de todos os ataques por Ip e porta</u></a>
                 </div>
             </div>
         </div>
@@ -318,9 +318,9 @@
                 <div id="chartContainer12" style="height: 360px; width: 100%;"></div>
                 <div id="chartContainer12D" style="visibility: hidden">
                     <br>
-                    <a href="#" style="color: #2e6da4;">
+                    <a onclick="downloadCSV('report/for-ip-and-protocol')" style="color: #2e6da4;">
                         <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
-                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                        <u>Gerar relatório de todos os ataques por IP e protocolo</u></a>
                 </div>
             </div>
         </div>
@@ -334,9 +334,9 @@
                 <div id="chartContainer13" style="height: 360px; width: 100%;"></div>
                 <div id="chartContainer13D" style="visibility: hidden">
                     <br>
-                    <a href="#" style="color: #2e6da4;">
+                    <a onclick="downloadCSV('report/for-protocol')" style="color: #2e6da4;">
                         <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
-                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                        <u>Gerar relatório de todos os ataques por protocolo</u></a>
                 </div>
             </div>
         </div>
