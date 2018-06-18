@@ -111,14 +111,32 @@
     }
 </style>
 <div id="jssor_1"
-     style="position:relative;margin:0 auto;top:0px;left:0px;width:980px;height:380px;overflow:hidden;visibility:hidden;">
+     style="position:relative;margin:0 auto;top:0px;left:0px;width:980px;height:410px;overflow:hidden;visibility:hidden;">
     <!-- Loading Screen -->
     <div data-u="loading" class="jssorl-009-spin"
          style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
         <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
     </div>
     <div data-u="slides"
-         style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
+         style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:410px;overflow:hidden;">
+
+        <div data-p="170.00" id="1">
+            <div class="relat-graph">
+                <div id="chartContainer1L" data-u="loading" class="jssorl-009-spin"
+                     style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
+                </div>
+                <div id="chartContainer1" style="height: 360px; width: 100%;"></div>
+
+                <div id="chartContainer1D" style="visibility: hidden">
+                    <br>
+                    <a onclick="downloadCSV('report/for-port-and-protocol')" style="color: #2e6da4;">
+                        <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
+                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                </div>
+            </div>
+        </div>
+
 
         <div data-p="170.00" id="2">
             <div class="relat-graph">
@@ -127,6 +145,14 @@
                     <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
                 </div>
                 <div id="chartContainer2" style="height: 360px; width: 100%;"></div>
+
+                <div id="chartContainer2D" style="visibility: hidden">
+                    <br>
+                    <a href="#" style="color: #2e6da4;">
+                        <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
+                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                </div>
+
             </div>
         </div>
 
@@ -137,7 +163,14 @@
                      style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
                     <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
                 </div>
-                <div id="chartContainer3" style="height: 360px; width: 100%;"></div>
+                <div id="chartContainer3" style="height: 300px; width: 100%;"></div>
+
+                <div id="chartContainer3D" style="visibility: hidden">
+                    <br>
+                    <a href="#" style="color: #2e6da4;">
+                        <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
+                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                </div>
             </div>
         </div>
 
@@ -148,10 +181,16 @@
                      style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
                     <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
                 </div>
-                <div id="chartContainer4" style="height: 300px; width: 100%;"></div>
+                <div id="chartContainer4" style="height: 360px; width: 100%;"></div>
+
+                <div id="chartContainer4D" style="visibility: hidden">
+                    <br>
+                    <a href="#" style="color: #2e6da4;">
+                        <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
+                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                </div>
             </div>
         </div>
-
 
         <div data-p="170.00" id="5">
             <div class="relat-graph">
@@ -160,6 +199,13 @@
                     <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
                 </div>
                 <div id="chartContainer5" style="height: 360px; width: 100%;"></div>
+
+                <div id="chartContainer5D" style="visibility: hidden">
+                    <br>
+                    <a href="#" style="color: #2e6da4;">
+                        <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
+                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                </div>
             </div>
         </div>
 
@@ -170,6 +216,14 @@
                     <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
                 </div>
                 <div id="chartContainer6" style="height: 360px; width: 100%;"></div>
+
+                <div id="chartContainer6D" style="visibility: hidden">
+                    <br>
+                    <a href="#" style="color: #2e6da4;">
+                        <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
+                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                </div>
+
             </div>
         </div>
 
@@ -180,6 +234,13 @@
                     <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
                 </div>
                 <div id="chartContainer7" style="height: 360px; width: 100%;"></div>
+
+                <div id="chartContainer7D" style="visibility: hidden">
+                    <br>
+                    <a href="#" style="color: #2e6da4;">
+                        <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
+                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                </div>
             </div>
         </div>
 
@@ -190,6 +251,12 @@
                     <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
                 </div>
                 <div id="chartContainer8" style="height: 360px; width: 100%;"></div>
+                <div id="chartContainer8D" style="visibility: hidden">
+                    <br>
+                    <a href="#" style="color: #2e6da4;">
+                        <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
+                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                </div>
             </div>
         </div>
 
@@ -200,6 +267,13 @@
                     <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
                 </div>
                 <div id="chartContainer9" style="height: 360px; width: 100%;"></div>
+                <div id="chartContainer9D" style="visibility: hidden">
+                    <br>
+                    <a href="#" style="color: #2e6da4;">
+                        <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
+                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                </div>
+
             </div>
         </div>
 
@@ -210,6 +284,12 @@
                     <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
                 </div>
                 <div id="chartContainer10" style="height: 360px; width: 100%;"></div>
+                <div id="chartContainer10D" style="visibility: hidden">
+                    <br>
+                    <a href="#" style="color: #2e6da4;">
+                        <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
+                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                </div>
             </div>
         </div>
 
@@ -220,6 +300,12 @@
                     <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
                 </div>
                 <div id="chartContainer11" style="height: 360px; width: 100%;"></div>
+                <div id="chartContainer11D" style="visibility: hidden">
+                    <br>
+                    <a href="#" style="color: #2e6da4;">
+                        <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
+                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                </div>
             </div>
         </div>
 
@@ -230,6 +316,12 @@
                     <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
                 </div>
                 <div id="chartContainer12" style="height: 360px; width: 100%;"></div>
+                <div id="chartContainer12D" style="visibility: hidden">
+                    <br>
+                    <a href="#" style="color: #2e6da4;">
+                        <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
+                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
+                </div>
             </div>
         </div>
 
@@ -240,16 +332,12 @@
                     <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
                 </div>
                 <div id="chartContainer13" style="height: 360px; width: 100%;"></div>
-            </div>
-        </div>
-
-        <div data-p="170.00" id="14">
-            <div class="relat-graph">
-                <div id="chartContainer14L" data-u="loading" class="jssorl-009-spin"
-                     style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
-                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg"/>
+                <div id="chartContainer13D" style="visibility: hidden">
+                    <br>
+                    <a href="#" style="color: #2e6da4;">
+                        <i class="fa fa-file-excel-o" style="font-size:24px;color:darkgreen"></i>
+                        <u>Gerar relatório de todos os ataques por portas e protocolos</u></a>
                 </div>
-                <div id="chartContainer14" style="height: 360px; width: 100%;"></div>
             </div>
         </div>
 
@@ -272,13 +360,14 @@
 
 <script src="js/jquery.js"></script>
 <script>
+
     var prev, prox, callFunction;
 
     callFunction = function (direction) {
 
-        /** DIV 2 => FORPORTANDPROTOCOL**/
-        prev = document.getElementById("14").style.cssText.indexOf('transform') === -1;
-        prox = document.getElementById("3").style.cssText.indexOf('transform') === -1;
+        /** DIV 1 => FORPORTANDPROTOCOL**/
+        prev = document.getElementById("13").style.cssText.indexOf('transform') === -1;
+        prox = document.getElementById("2").style.cssText.indexOf('transform') === -1;
 
         if (prev && direction === 'arrowright') {
             forPortAndProtocol()
@@ -286,6 +375,19 @@
 
         if (prox && direction === 'arrowleft') {
             forPortAndProtocol()
+        }
+
+
+        /** DIV 2 => FORPCITY**/
+        prev = document.getElementById("1").style.cssText.indexOf('transform') === -1;
+        prox = document.getElementById("3").style.cssText.indexOf('transform') === -1;
+
+        if (prev && direction === 'arrowright') {
+            forCity()
+        }
+
+        if (prox && direction === 'arrowleft') {
+            forCity()
         }
 
 
@@ -294,11 +396,11 @@
         prox = document.getElementById("4").style.cssText.indexOf('transform') === -1;
 
         if (prev && direction === 'arrowright') {
-            forCity()
+            forCityAndPort()
         }
 
         if (prox && direction === 'arrowleft') {
-            forCity()
+            forCityAndPort()
         }
 
 
@@ -307,24 +409,23 @@
         prox = document.getElementById("5").style.cssText.indexOf('transform') === -1;
 
         if (prev && direction === 'arrowright') {
-            forCityAndPort()
+            forCityAndProtocol()
         }
 
         if (prox && direction === 'arrowleft') {
-            forCityAndPort()
+            forCityAndProtocol()
         }
-
 
         /** DIV 5 => FORPCITY**/
         prev = document.getElementById("4").style.cssText.indexOf('transform') === -1;
         prox = document.getElementById("6").style.cssText.indexOf('transform') === -1;
 
         if (prev && direction === 'arrowright') {
-            forCityAndProtocol()
+            forCityPortAndProtocol()
         }
 
         if (prox && direction === 'arrowleft') {
-            forCityAndProtocol()
+            forCityPortAndProtocol()
         }
 
         /** DIV 6 => FORPCITY**/
@@ -338,6 +439,7 @@
         if (prox && direction === 'arrowleft') {
             forCountry()
         }
+
 
         /** DIV 7 => FORPCITY**/
         prev = document.getElementById("6").style.cssText.indexOf('transform') === -1;
@@ -370,11 +472,11 @@
         prox = document.getElementById("10").style.cssText.indexOf('transform') === -1;
 
         if (prev && direction === 'arrowright') {
-            forIP()
+            forCountryPortAndProtocol()
         }
 
         if (prox && direction === 'arrowleft') {
-            forIP()
+            forCountryPortAndProtocol()
         }
 
 
@@ -383,11 +485,11 @@
         prox = document.getElementById("11").style.cssText.indexOf('transform') === -1;
 
         if (prev && direction === 'arrowright') {
-            forIPAndPort()
+            forIP()
         }
 
         if (prox && direction === 'arrowleft') {
-            forIPAndPort()
+            forIP()
         }
 
 
@@ -396,11 +498,11 @@
         prox = document.getElementById("12").style.cssText.indexOf('transform') === -1;
 
         if (prev && direction === 'arrowright') {
-            forIPAndProtocol()
+            forIPAndPort()
         }
 
         if (prox && direction === 'arrowleft') {
-            forIPAndProtocol()
+            forIPAndPort()
         }
 
 
@@ -409,43 +511,37 @@
         prox = document.getElementById("13").style.cssText.indexOf('transform') === -1;
 
         if (prev && direction === 'arrowright') {
-            forProtocol()
+            forIPAndProtocol()
         }
 
         if (prox && direction === 'arrowleft') {
-            forProtocol()
+            forIPAndProtocol()
         }
 
 
         /** DIV 13 => FORPCITY**/
         prev = document.getElementById("12").style.cssText.indexOf('transform') === -1;
-        prox = document.getElementById("14").style.cssText.indexOf('transform') === -1;
+        prox = document.getElementById("1").style.cssText.indexOf('transform') === -1;
 
         if (prev && direction === 'arrowright') {
-            forCityPortAndProtocol()
+            forProtocol()
         }
 
         if (prox && direction === 'arrowleft') {
-            forCityPortAndProtocol()
-        }
-
-
-        /** DIV 14 => FORPCITY**/
-        prev = document.getElementById("13").style.cssText.indexOf('transform') === -1;
-        prox = document.getElementById("2").style.cssText.indexOf('transform') === -1;
-
-        if (prev && direction === 'arrowright') {
-            forCountryPortAndProtocol()
-        }
-
-        if (prox && direction === 'arrowleft') {
-            forCountryPortAndProtocol()
+            forProtocol()
         }
     };
 
     $(document).ready(function() {
         forPortAndProtocol();
     });
+
+    function downloadCSV(link) {
+        $.post(link, {_token: "{{ csrf_token() }}", download: true})
+            .done(function (data) {
+                alert('CSV baixado com sucesso');
+            });
+    }
 
     $(document).keydown(function(e) {
         var direction;
@@ -533,7 +629,7 @@
                 objectColor
             );
 
-            var chart = new CanvasJS.Chart("chartContainer2", {
+            var chart = new CanvasJS.Chart("chartContainer1", {
                 animationEnabled: true,
                 theme: "dark1",
                 colorSet: "colorArray",
@@ -574,9 +670,10 @@
             });
 
             chart.render();
-            var loading = document.getElementById("chartContainer2L");
+            var loading = document.getElementById("chartContainer1L");
             if (loading) {
-                loading.remove()
+                loading.remove();
+                document.getElementById("chartContainer1D").style.visibility = 'visible'
             }
 
         })};
@@ -590,7 +687,7 @@
                 object.push({y: data[i].total, label: data[i].name})
             }
 
-            var chart = new CanvasJS.Chart("chartContainer3", {
+            var chart = new CanvasJS.Chart("chartContainer2", {
                 animationEnabled: true,
                 theme: "dark1",
 
@@ -617,9 +714,10 @@
             });
 
             chart.render();
-            var loading = document.getElementById("chartContainer3L");
+            var loading = document.getElementById("chartContainer2L");
             if (loading) {
-                loading.remove()
+                loading.remove();
+                document.getElementById("chartContainer2D").style.visibility = 'visible'
             }
 
         })};
@@ -633,7 +731,7 @@
                 object.push({y: data[i].total, label: data[i].name+'     '+data[i].port})
             }
 
-            var chart = new CanvasJS.Chart("chartContainer4", {
+            var chart = new CanvasJS.Chart("chartContainer3", {
                 animationEnabled: true,
                 theme: "dark1",
 
@@ -660,9 +758,10 @@
             });
 
             chart.render();
-            var loading = document.getElementById("chartContainer4L");
+            var loading = document.getElementById("chartContainer3L");
             if (loading) {
-                loading.remove()
+                loading.remove();
+                document.getElementById("chartContainer3D").style.visibility = 'visible'
             }
 
         })};
@@ -687,7 +786,7 @@
             }
 
 
-            var chart = new CanvasJS.Chart("chartContainer5", {
+            var chart = new CanvasJS.Chart("chartContainer4", {
                 animationEnabled: true,
                 theme: "dark1",
                 colorSet: "colorArray",
@@ -728,9 +827,10 @@
             });
 
             chart.render();
-            var loading = document.getElementById("chartContainer5L");
+            var loading = document.getElementById("chartContainer4L");
             if (loading) {
                 loading.remove()
+                document.getElementById("chartContainer4D").style.visibility = 'visible'
             }
 
         })};
@@ -755,7 +855,7 @@
             }
 
 
-            var chart = new CanvasJS.Chart("chartContainer13", {
+            var chart = new CanvasJS.Chart("chartContainer5", {
                 animationEnabled: true,
                 theme: "dark1",
                 colorSet: "colorArray",
@@ -796,9 +896,10 @@
             });
 
             chart.render();
-            var loading = document.getElementById("chartContainer13L");
+            var loading = document.getElementById("chartContainer5L");
             if (loading) {
-                loading.remove()
+                loading.remove();
+                document.getElementById("chartContainer5D").style.visibility = 'visible'
             }
 
         })};
@@ -842,7 +943,8 @@
             chart.render();
             var loading = document.getElementById("chartContainer6L");
             if (loading) {
-                loading.remove()
+                loading.remove();
+                document.getElementById("chartContainer6D").style.visibility = 'visible'
             }
 
         })};
@@ -885,7 +987,8 @@
             chart.render();
             var loading = document.getElementById("chartContainer7L");
             if (loading) {
-                loading.remove()
+                loading.remove();
+                document.getElementById("chartContainer7D").style.visibility = 'visible'
             }
 
         })};
@@ -910,7 +1013,7 @@
             }
 
 
-            var chart = new CanvasJS.Chart("chartContainer14", {
+            var chart = new CanvasJS.Chart("chartContainer8", {
                 animationEnabled: true,
                 theme: "dark1",
                 colorSet: "colorArray",
@@ -951,9 +1054,10 @@
             });
 
             chart.render();
-            var loading = document.getElementById("chartContainer14L");
+            var loading = document.getElementById("chartContainer8L");
             if (loading) {
-                loading.remove()
+                loading.remove();
+                document.getElementById("chartContainer8D").style.visibility = 'visible'
             }
 
         })};
@@ -978,7 +1082,7 @@
             }
 
 
-            var chart = new CanvasJS.Chart("chartContainer8", {
+            var chart = new CanvasJS.Chart("chartContainer9", {
                 animationEnabled: true,
                 theme: "dark1",
                 colorSet: "colorArray",
@@ -1019,9 +1123,10 @@
             });
 
             chart.render();
-            var loading = document.getElementById("chartContainer8L");
+            var loading = document.getElementById("chartContainer9L");
             if (loading) {
-                loading.remove()
+                loading.remove();
+                document.getElementById("chartContainer9D").style.visibility = 'visible'
             }
 
         })};
@@ -1035,7 +1140,7 @@
                 object.push({y: data[i].total, label: data[i].dst_ip})
             }
 
-            var chart = new CanvasJS.Chart("chartContainer9", {
+            var chart = new CanvasJS.Chart("chartContainer10", {
                 animationEnabled: true,
                 theme: "dark1",
 
@@ -1062,9 +1167,10 @@
             });
 
             chart.render();
-            var loading = document.getElementById("chartContainer9L");
+            var loading = document.getElementById("chartContainer10L");
             if (loading) {
-                loading.remove()
+                loading.remove();
+                document.getElementById("chartContainer10D").style.visibility = 'visible'
             }
 
         })};
@@ -1078,7 +1184,7 @@
                 object.push({y: data[i].total, label: data[i].dst_ip+'     '+data[i].port})
             }
 
-            var chart = new CanvasJS.Chart("chartContainer10", {
+            var chart = new CanvasJS.Chart("chartContainer11", {
                 animationEnabled: true,
                 theme: "dark1",
 
@@ -1105,9 +1211,10 @@
             });
 
             chart.render();
-            var loading = document.getElementById("chartContainer10L");
+            var loading = document.getElementById("chartContainer11L");
             if (loading) {
-                loading.remove()
+                loading.remove();
+                document.getElementById("chartContainer11D").style.visibility = 'visible'
             }
 
         })};
@@ -1132,7 +1239,7 @@
             }
 
 
-            var chart = new CanvasJS.Chart("chartContainer11", {
+            var chart = new CanvasJS.Chart("chartContainer12", {
                 animationEnabled: true,
                 theme: "dark1",
                 colorSet: "colorArray",
@@ -1173,9 +1280,10 @@
             });
 
             chart.render();
-            var loading = document.getElementById("chartContainer11L");
+            var loading = document.getElementById("chartContainer12L");
             if (loading) {
-                loading.remove()
+                loading.remove();
+                document.getElementById("chartContainer12D").style.visibility = 'visible'
             }
 
         })};
@@ -1200,7 +1308,7 @@
             }
 
 
-            var chart = new CanvasJS.Chart("chartContainer12", {
+            var chart = new CanvasJS.Chart("chartContainer13", {
                 animationEnabled: true,
                 theme: "dark1",
                 colorSet: "colorArray",
@@ -1242,9 +1350,10 @@
 
             chart.render();
 
-            var loading = document.getElementById("chartContainer12L");
+            var loading = document.getElementById("chartContainer13L");
             if (loading) {
-                loading.remove()
+                loading.remove();
+                document.getElementById("chartContainer13D").style.visibility = 'visible'
             }
 
         })};

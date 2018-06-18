@@ -24,7 +24,6 @@ Route::prefix('map')->group(function () {
 
 
 Route::prefix('report')->group(function () {
-    Route::post('for-port', 'ReportController@forPort');
     Route::post('for-port-and-protocol', 'ReportController@forPortAndProtocol');
     Route::post('for-city', 'ReportController@forCity');
     Route::post('for-city-and-port', 'ReportController@forCityAndPort');
