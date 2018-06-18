@@ -65,7 +65,7 @@
 						<div class="row">
 							<div class="col-md-7">
 								<div class="home-content wow fadeInLeft" data-wow-offset="10" data-wow-delay="1.2s">
-									<p>"Ataques que foram detectados através do mecanismo Honeypot durante o ano de 2013.""Ataques que foram detectados através do mecanismo Honeypot durante o ano de 2013.""Ataques que foram detectados através do mecanismo Honeypot durante o ano de 2013."</p>
+									<p>"Ataques que foram detectados através do mecanismo de Honeypot ao redor do mundo, contendo informações dos ataques"</p>
 								</div>
 									<p class="home-content2 wow fadeInLeft" data-wow-offset="10" data-wow-delay="1.4s"><a href="#HONEYPOT"> - O que é Honeypot?</a></p>
 									<p class="home-content2 wow fadeInLeft" data-wow-offset="10" data-wow-delay="1.6s"><a href="#MAPA">- Qual a importância de proteger dados? </a></p>
@@ -107,7 +107,7 @@
 							<div class="hp-sub-title wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.6s">
 								Honeypot
 							</div>
-							<p class="wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.6s">Honeypot é um mecanismo de segurança do computador configurado para detectar, defletir ou, de alguma maneira, neutralizar tentativas de uso não autorizado de sistemas de informação. Geralmente, um honeypot consiste em dados que parecem ser parte legítima de um website, mas na verdade é isolado e monitorado, e parece conter informações ou um recurso de valor para os invasores, que são então bloqueado.</p>
+							<p class="wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.6s">Honeypot é um mecanismo de segurança do computador configurado para detectar, defletir ou, de alguma maneira, neutralizar tentativas de uso não autorizado de sistemas de informação. Geralmente, um honeypot consiste em dados falsos que parecem ser parte legítima de um website, mas na verdade é isolado e monitorado, e parece conter informações ou um recurso de valor para os invasores, que são então bloqueado.</p>
 
 							<div class="hp-sub-title wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.9s" >
 								Ferramentas honeypot
@@ -119,7 +119,7 @@
 								Observações
 							</div>
 							<p class="wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="1.2s">
-							Mesmo sendo de grande valor o uso deles, nunca se deve confiar a segurança da organização apenas a essas ferramentas, lembrando que não são meios de proteção direta, mas sim, meios de estudos. Elas devem trabalhar juntas com meios de prevenções convencionais, para evitar que um atacante possa invadir outros sistemas ou redes.</p>
+							Mesmo sendo de grande valor o uso deles, nunca se deve confiar a segurança da organização apenas a essas ferramentas, lembrando que não são meios de proteção direta, mas sim, meios de estudos. Elas devem trabalhar juntas com outros meios de proteção e recuperação, para evitar maiores danos que o invasor possa inferir ao seu  sistema.</p>
 						</div>
 					</div>
 				</div>
