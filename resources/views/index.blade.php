@@ -364,6 +364,9 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <script>
@@ -402,7 +405,8 @@
             url: '/map/new-attack', // This is the url we gave in the route
             data: data, // a JSON object to send back
             success: function (response) { // What to do if we succeed
-                console.log(response);
+                var shuffle = Math.random().toString();
+                addCirculo(parseInt(response.lon), parseInt(response.lat), shuffle.substr(shuffle.length - 9), response.color);
             }
 
         });
@@ -423,6 +427,7 @@
         $('#cities').select2({
             data: cities[1]
         })
+
     });
 
     $("#countries").on('change', function () {

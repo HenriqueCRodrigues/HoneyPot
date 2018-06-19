@@ -13,6 +13,6 @@ class Country extends Model
 
     public function cities()
     {
-        return $this->hasMany(City::class)->select(['id', 'name']);
+        return $this->hasMany(City::class)->select(['id', 'name AS text']);
     }
 }
