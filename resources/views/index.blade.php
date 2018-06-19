@@ -142,7 +142,6 @@
 										<div class="modal" id="modal_insercao">
 										  <div class="modal-dialog">
 										    <div class="modal-content">
-										    	<form id="attack" method="post"">
 										      <!-- Modal Header -->
 										      <div class="modal-header">
 										        <h4 class="modal-title">INSERÇÃO DE ATAQUES</h4>
@@ -170,17 +169,13 @@
 										        </div>
 										        <hr>
 										        <div class="row">
+
 										        	<div class="col-md-6">
-										        	<div class="dropdown">
-														<form>
-									                   		 <div class="form-group">
-									                        	<label for="tag_list">Tags:</label>
-									                        	<select id="tag_list" name="tag_list[]" class="form-control" multiple></select>
-									                   		</div>
-									                	</form>
-										        		<label for="validationTooltip01">Cidade:</label>
-      													<input id="city" type="text" class="form-control" id="validationTooltip01" placeholder="Digite a Cidade" value="" required><br>
-										        	</div>
+														<select id="countries" class="js-example-basic-single" name="countries">
+														</select>
+
+														<select id="cities" class="js-example-basic-single" name="cities">
+														</select>
 										        	</div>
 										        	<div class="col-md-6">
 										        		<label for="validationTooltip01">País:</label>
@@ -248,6 +243,17 @@
 												</div>
 											</div>
 										</div>
+										<div class="menu-title">
+											Tipos de Protocolos
+										</div>
+										<div class="legenda">
+											<div class="tcp">
+												TCP
+											</div>
+											<div class="udp">
+												UDP
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -281,6 +287,7 @@
 
 	<script src="js/wow.min.js"></script>
 	<script src="js/func_maps.js"></script>
+	<script src="js/custom.js"></script>
 
 
     <script src="js/jquery.js"></script>
@@ -293,73 +300,68 @@
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 
-	<script src="js/custom.js"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-	<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=fezvrastagithubiopopperjs" id="_carbonads_js">
-      </script>
 
-	<script>
 
-	function newAttack(){
-    	var ip = $("#ip").val();
-    	var lat = $("#lat").val();
-    	var lon = $("#lon").val();
-    	var city = $("#city").val();
-    	var country = $("#country").val();
-    	var date = $("#date").val();
-    	var hour = $("#hour").val();
-    	var min = $("#min").val();
+    <script>
 
-    	var data = {ip: ip, lat: lat, lon: lon, city: city, country: country, date: date, hour: hour, min: min};
+    var cities = [];
+    var countries = [];
 
-    	if(data.indexOf(null)){
-    		alert("Todos os campos devem ser preenchidos!!");
-    	}else{
-			
-		$.post('map/new-attack', { _token: "{{ csrf_token() }}", data})
-            .done(function( data ) {
-            	alert("dados inseridos!!");
-            	var shuffle = Math.random().toString();
+    function newAttack(){
 
-				addCirculo(parseInt(data.lon), parseInt(data.lat), shuffle.substr(shuffle.length - 9), data.color);
+        var ip = $("#ip").val();
+        var lat = $("#lat").val();
+        var lon = $("#lon").val();
+        var city = $("#city").val();
+        var country = $("#country").val();
+        var date = $("#date").val();
+        var hour = $("#hour").val();
+        var min = $("#min").val();
+
+        var data = {ip: ip, lat: lat, lon: lon, city: city, country: country, date: date, hour: hour, min: min};
+
+        if(data.indexOf(null)){
+            alert("Todos os campos devem ser preenchidos!!");
+        }else{
+
+            $.post('map/new-attack', { _token: "{{ csrf_token() }}", data})
+        .done(function( data ) {
+                alert("dados inseridos!!");
+                var shuffle = Math.random().toString();
+
+                addCirculo(parseInt(data.lon), parseInt(data.lat), shuffle.substr(shuffle.length - 9), data.color);
             });
 
-	    	}
+        }
+
 
 	}
 
-
 	$.get('map/all-country-cities').done(function( data ) {
-		//$("tag_list").select2({
-		 // data: data
-		//})
-		
+        $.each(data, function( key, value ) {
+            countries[key] = {id: value.id, text: value.name}
+            cities[value.id] = value.cities
+        });
+
+        $('#countries').select2({
+            data: countries
+        });
+
+        $('#cities').select2({
+            data: cities[1]
+        })
 	});
 
+    $("#countries").on('change', function (){
+        $('#cities').select2({
+            data: cities[this.value]
+        })
+    });
 
-	$('#tag_list').select2({
-            placeholder: "Choose tags...",
-            minimumInputLength: 2,
-            ajax: {
-                url: '/map/all-country-cities',
-                dataType: 'json',
-                data: function (data) {
-                    return {
-                        data: data
-                    };
-                },
-                processResults: function (data) {
-                	console.log(data)
-                    return {
-                        results: data
-                    };
-                },
-                cache: true
-            }
-        });
 
         $.post('map/insert', { _token: "{{ csrf_token() }}"})
             .done(function( data ) {
