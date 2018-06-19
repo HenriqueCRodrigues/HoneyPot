@@ -345,23 +345,15 @@
         	headers: {
       					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 						},
-    		method: 'POST', 
-    		url: '/map/new-attack', 
-    		data: data, 
-    		success: function(response){ 
+    		method: 'POST', // Type of response and matches what we said in the route
+    		url: '/map/new-attack', // This is the url we gave in the route
+    		data: data, // a JSON object to send back
+    		success: function(response){ // What to do if we succeed
         console.log(response); 
     }
     
 });
 
-        $.post('map/new-attack', { _token: "{{ csrf_token() }}", data})
-        .done(function( data ) {
-        	console.log(data);
-                alert("dados inseridos!!");
-                var shuffle = Math.random().toString();
-
-                addCirculo(parseInt(data.lon), parseInt(data.lat), shuffle.substr(shuffle.length - 9), data.color);
-            });
 
         
 
