@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\City;
+use App\Models\Country;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class AttackController extends Controller
 {
 	public function getCountryAndCities()
 	{
-		return City::select('cities.name AS city', 'countries.name AS country')
-		->join('countries', 'cities.country_id', '=', 'countries.id')
-		->get();
-		
+		return response()->json(Country::select('id', 'name')->get()->each(function (Country $country) {
+		 return $country->cities;
+        }));
+
 	}
 
     public function storeAttack(Request $request)

@@ -10,4 +10,9 @@ class Country extends Model
       'acronym',
       'name'
     ];
+
+    public function cities()
+    {
+        return $this->hasMany(City::class)->select(['id', 'name']);
+    }
 }
