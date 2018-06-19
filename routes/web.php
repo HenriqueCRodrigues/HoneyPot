@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::prefix('map')->group(function () {
     Route::post('insert', 'MapController@getAttacks');
     Route::post('new-attack', 'AttackController@storeAttack');
+    Route::get('all-country-cities', 'AttackController@getCountryAndCities');
 
 });
 
@@ -37,7 +38,6 @@ Route::prefix('report')->group(function () {
     Route::post('for-ip-and-port', 'ReportController@forIpAndPort');
     Route::post('for-ip-and-protocol', 'ReportController@forIpAndProtocol');
     Route::post('for-protocol', 'ReportController@forProtocol');
-
     //Route::post('for-port-and-date', 'ReportController@forPortAndDate');
     //Route::post('for-city-and-date', 'ReportController@forCityAndDate');
     //Route::post('for-city-date-and-port', 'ReportController@forCityDateAndPort');

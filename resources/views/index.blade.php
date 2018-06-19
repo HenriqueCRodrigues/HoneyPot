@@ -119,7 +119,7 @@
 								Observações
 							</div>
 							<p class="wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="1.2s">
-							Mesmo sendo de grande valor o uso deles, nunca se deve confiar a segurança da organização apenas a essas ferramentas, lembrando que não são meios de proteção direta, mas sim, meios de estudos. Elas devem trabalhar juntas com outros meios de proteção e recuperação, para evitar maiores danos que o invasor possa inferir ao seu  sistema.</p>
+							Mesmo sendo de grande valor o uso deles, nunca se deve confiar a segurança da organização apenas a essas ferramentas, lembrando que não são meios de proteção direta, mas sim, meios de estudos. Elas devem trabalhar juntas com outros meios de proteção e recuperação, para evitar maiores danos que o invasor possa inferir ao seu 		 sistema.</p>
 						</div>
 					</div>
 				</div>
@@ -136,7 +136,86 @@
 							<div class="menu">
 								<div class="overlay">
 									<div class="menu-content">
-										
+								
+										<input type="button" value="Inserir Ataque" class="menu-btns modal-trigger" data-toggle="modal" data-target="#modal_insercao"/><br>
+										<!-- The Modal -->
+										<div class="modal" id="modal_insercao">
+										  <div class="modal-dialog">
+										    <div class="modal-content">
+										    	<form id="attack" method="post" onclick="newAttack()">
+										      <!-- Modal Header -->
+										      <div class="modal-header">
+										        <h4 class="modal-title">INSERÇÃO DE ATAQUES</h4>
+										        <button type="button" class="close" data-dismiss="modal">&times;</button>
+										      </div>
+										      <!-- Modal body -->
+										      <div class="modal-body">
+										      	<div class="row">
+										        	<div class="col-md-12">
+										        		<label for="validationTooltip01">IP de destino:</label>
+      													<input id="ip" type="text" class="form-control" id="validationTooltip01" placeholder="Digite o IP do alvo" value="" required><br>
+										        	</div>
+										        </div>
+										        <hr>
+										        <div class="row">
+										        	<div class="col-md-6">
+										        		<label for="validationTooltip01">Latitude:</label>
+      													<input id="lat" type="text" class="form-control" id="validationTooltip01" placeholder="Digite a Latitude" value="" required><br>
+										        	</div>
+										        	
+										        	<div class="col-md-6">
+										        		<label for="validationTooltip01">Longitude:</label>
+      													<input id="lon" type="text" class="form-control" id="validationTooltip01" placeholder="Digite a Longitude" value="" required>
+      												</div>
+										        </div>
+										        <hr>
+										        <div class="row">
+										        	<div class="col-md-6">
+										        	<div class="dropdown">
+														<div class="form-group">
+													      <label for="inputState">State</label>
+													      <select id="inputState" class="form-control">
+													        <option selected>Choose...</option>
+													        <option>...</option>
+													      </select>
+													    </div>
+										        		<label for="validationTooltip01">Cidade:</label>
+      													<input id="city" type="text" class="form-control" id="validationTooltip01" placeholder="Digite a Cidade" value="" required><br>
+										        	</div>
+										        	</div>
+										        	<div class="col-md-6">
+										        		<label for="validationTooltip01">País:</label>
+      													<input id="country" type="text" class="form-control" id="validationTooltip01" placeholder="Digite o País" value="" required>
+      												</div>
+										        </div>
+										        <hr>
+										        <div class="row">
+										        	<div class="col-md-12">
+										        		<label for="validationTooltip01">Data</label>
+      													<input id="date" type="text" class="form-control" id="validationTooltip01" placeholder="Dia / Mês / Ano" value="" required><br>
+										        	</div>
+										        </div>
+										        <div class="row">
+										        	<div class="col-md-6">
+										        		<label for="validationTooltip01">Hora:</label>
+      													<input id="hour" type="text" class="form-control" id="validationTooltip01" placeholder="Hora" value="" required><br>
+										        	</div>
+										        	<div class="col-md-6">
+										        		<label for="validationTooltip01">Minuto:</label>
+      													<input id="min" type="text" class="form-control" id="validationTooltip01" placeholder="Minuto" value="" required><br>
+										        	</div>
+										        </div>
+										      </div>
+										      <!-- Modal footer -->
+										      <div class="modal-footer">
+										      	<button type="submit" class="btn menu-btns" data-dismiss="modal">Inserir</button>
+										        <button type="button" class="btn menu-btns" data-dismiss="modal">Cancelar</button>
+										      </div>
+
+										    </div>
+										  </div>
+										</div>
+										</form>
 										<div class="menu-title">
 											LOCALIZAÇÃO
 										</div>
@@ -218,6 +297,40 @@
 	<script src="js/custom.js"></script>
 
 	<script>
+
+	function newAttack(){
+    	var ip = $("#ip").val();
+    	var lat = $("#lat").val();
+    	var lon = $("#lon").val();
+    	var city = $("#city").val();
+    	var country = $("#country").val();
+    	var date = $("#date").val();
+    	var hour = $("#hour").val();
+    	var min = $("#min").val();
+
+    	var data = {ip: ip, lat: lat, lon: lon, city: city, country: country, date: date, hour: hour, min: min};
+
+    	if(data.indexOf(null)){
+    		alert("Todos os campos devem ser preenchidos!!");
+    	}else{
+			
+		$.post('map/new-attack', { _token: "{{ csrf_token() }}", data})
+            .done(function( data ) {
+            	alert("dados inseridos!!");
+            	var shuffle = Math.random().toString();
+
+				addCirculo(parseInt(data.lon), parseInt(data.lat), shuffle.substr(shuffle.length - 9), data.color);
+            });
+
+	    	}
+
+	}
+
+
+	$.get('map/all-country-citiesz').done(function( data ) {
+		
+	});
+
         $.post('map/insert', { _token: "{{ csrf_token() }}"})
             .done(function( data ) {
                 var i, j;

@@ -1,4 +1,4 @@
-//Smooth Scrolling
+﻿//Smooth Scrolling
 $(document).ready(function(){
   // Add smooth scrolling to all links
   $("a").on('click', function(event) {
@@ -96,5 +96,11 @@ $(document).ready(function(){
 		decrypted_text: "INTRODUÇÃO",
 	});
 });
+
+$('.launch-modal').on('click', function(e){
+    e.preventDefault();
+    $( '#' + $(this).data('modal-id') ).modal();
+});
+
 
 
