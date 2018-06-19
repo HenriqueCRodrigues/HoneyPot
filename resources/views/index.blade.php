@@ -11,6 +11,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
     <!--Mapbox-->
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
@@ -21,9 +23,7 @@
 	<link rel="stylesheet" type="text/css" href="css/map.css">
 	<link rel="stylesheet" type="text/css" href="css/animate.css">
 
-
-	<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=fezvrastagithubiopopperjs" id="_carbonads_js">
-      </script>
+	
 
 	<title>Honeypot Detection</title>
 
@@ -142,7 +142,7 @@
 										<div class="modal" id="modal_insercao">
 										  <div class="modal-dialog">
 										    <div class="modal-content">
-										    	<form id="attack" method="post" onclick="newAttack()">
+										    	<form id="attack" method="post"">
 										      <!-- Modal Header -->
 										      <div class="modal-header">
 										        <h4 class="modal-title">INSERÇÃO DE ATAQUES</h4>
@@ -172,13 +172,12 @@
 										        <div class="row">
 										        	<div class="col-md-6">
 										        	<div class="dropdown">
-														<div class="form-group">
-													      <label for="inputState">State</label>
-													      <select id="inputState" class="form-control">
-													        <option selected>Choose...</option>
-													        <option>...</option>
-													      </select>
-													    </div>
+														<form>
+									                   		 <div class="form-group">
+									                        	<label for="tag_list">Tags:</label>
+									                        	<select id="tag_list" name="tag_list[]" class="form-control" multiple></select>
+									                   		</div>
+									                	</form>
 										        		<label for="validationTooltip01">Cidade:</label>
       													<input id="city" type="text" class="form-control" id="validationTooltip01" placeholder="Digite a Cidade" value="" required><br>
 										        	</div>
@@ -296,6 +295,12 @@
 
 	<script src="js/custom.js"></script>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+	<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=fezvrastagithubiopopperjs" id="_carbonads_js">
+      </script>
+
 	<script>
 
 	function newAttack(){
@@ -327,9 +332,34 @@
 	}
 
 
-	$.get('map/all-country-citiesz').done(function( data ) {
+	$.get('map/all-country-cities').done(function( data ) {
+		//$("tag_list").select2({
+		 // data: data
+		//})
 		
 	});
+
+
+	$('#tag_list').select2({
+            placeholder: "Choose tags...",
+            minimumInputLength: 2,
+            ajax: {
+                url: '/map/all-country-cities',
+                dataType: 'json',
+                data: function (data) {
+                    return {
+                        data: data
+                    };
+                },
+                processResults: function (data) {
+                	console.log(data)
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            }
+        });
 
         $.post('map/insert', { _token: "{{ csrf_token() }}"})
             .done(function( data ) {
