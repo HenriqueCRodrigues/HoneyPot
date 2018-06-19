@@ -139,6 +139,7 @@
 								
 										<input type="button" value="Inserir Ataque" class="menu-btns modal-trigger" data-toggle="modal" data-target="#modal_insercao"/><br>
 										<!-- The Modal -->
+										<form method="post"  >
 										<div class="modal" id="modal_insercao">
 										  <div class="modal-dialog">
 										    <div class="modal-content">
@@ -154,6 +155,21 @@
 										        		<label for="validationTooltip01">IP de destino:</label>
       													<input id="ip" type="text" class="form-control" id="validationTooltip01" placeholder="Digite o IP do alvo" value="" required><br>
 										        	</div>
+										        </div>
+										         <div class="row">
+										        	<div class="col-md-6">
+										        		<label for="validationTooltip01">Porta:</label>
+      													<input id="port" type="text" class="form-control" id="validationTooltip01" placeholder="Digite a porta" value="" required><br>
+										        	</div>
+										        	
+										        	<div class="col-md-6">
+										        		<label for="validationTooltip01">Protocolo:</label>
+      													<select class="form-control" id="protocol" class="js-example-basic-single" name="countries">
+      													<option value="1">TCP</option>
+      													<option value="2">UDP</option>
+														</select>
+
+      												</div>
 										        </div>
 										        <hr>
 										        <div class="row">
@@ -171,15 +187,15 @@
 										        <div class="row">
 
 										        	<div class="col-md-6">
-														<select id="countries" class="js-example-basic-single" name="countries">
+										        	<label for="validationTooltip01">País:</label>
+														<select class="form-control" id="countries" class="js-example-basic-single" name="countries">
 														</select>
 
-														<select id="cities" class="js-example-basic-single" name="cities">
-														</select>
 										        	</div>
 										        	<div class="col-md-6">
-										        		<label for="validationTooltip01">País:</label>
-      													<input id="country" type="text" class="form-control" id="validationTooltip01" placeholder="Digite o País" value="" required>
+										        		<label for="validationTooltip01">Cidade:</label>
+														<select class="form-control" id="cities" class="js-example-basic-single" name="cities">
+														</select>
       												</div>
 										        </div>
 										        <hr>
@@ -202,9 +218,10 @@
 										      </div>
 										      <!-- Modal footer -->
 										      <div class="modal-footer">
-										      	<button type="submit" class="btn menu-btns" data-dismiss="modal">Inserir</button>
+										      	<button id="submit" name="submit" type="submit" value="submit" onclick="newAttack()" class="btn menu-btns" data-dismiss="modal">Inserir</button>
 										        <button type="button" class="btn menu-btns" data-dismiss="modal">Cancelar</button>
 										      </div>
+
 
 										    </div>
 										  </div>
@@ -304,7 +321,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
     <script>
 
@@ -312,31 +329,41 @@
     var countries = [];
 
     function newAttack(){
-
+    	var protocol = $("#protocol").val();
         var ip = $("#ip").val();
+        var port = $("#port").val();
         var lat = $("#lat").val();
         var lon = $("#lon").val();
-        var city = $("#city").val();
-        var country = $("#country").val();
+        var city = $("#cities").val();
         var date = $("#date").val();
         var hour = $("#hour").val();
         var min = $("#min").val();
 
-        var data = {ip: ip, lat: lat, lon: lon, city: city, country: country, date: date, hour: hour, min: min};
+        var data = {ip: ip, lat: lat, lon: lon, city: city, date: date, hour: hour, min: min, protocol: protocol, port: port};
 
-        if(data.indexOf(null)){
-            alert("Todos os campos devem ser preenchidos!!");
-        }else{
+        $.ajax({
+        	headers: {
+      					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+						},
+    		method: 'POST', 
+    		url: '/map/new-attack', 
+    		data: data, 
+    		success: function(response){ 
+        console.log(response); 
+    }
+    
+});
 
-            $.post('map/new-attack', { _token: "{{ csrf_token() }}", data})
+        $.post('map/new-attack', { _token: "{{ csrf_token() }}", data})
         .done(function( data ) {
+        	console.log(data);
                 alert("dados inseridos!!");
                 var shuffle = Math.random().toString();
 
                 addCirculo(parseInt(data.lon), parseInt(data.lat), shuffle.substr(shuffle.length - 9), data.color);
             });
 
-        }
+        
 
 
 	}
